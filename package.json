@@ -1,0 +1,20 @@
+{
+  "name": "projet-fisheyes",
+  "version": "1.0.0",
+  "description": "openclassrooms projet 6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmyDef/Projet-Fisheye.git"
+  },
+  "author": "Defains Jimmy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmyDef/Projet-Fisheye/issues"
+  },
+  "homepage": "https://github.com/JimmyDef/Projet-Fisheye#readme"
+}

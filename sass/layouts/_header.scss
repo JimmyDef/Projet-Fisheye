@@ -1,0 +1,21 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+  margin: 0 100px 100px;
+}
+
+h1 {
+  color: $color-primary;
+
+  font-size: 36px;
+
+  font-weight: 400;
+}
+
+.logo {
+  height: 50px;
+  // margin-left: 100px;
+}

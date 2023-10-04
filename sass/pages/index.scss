@@ -1,0 +1,30 @@
+body {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.photographer_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 70px;
+}
+
+.photographer_section article {
+  justify-self: center;
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.photographer_section article h2 {
+  color: #d3573c;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.photographer_section article img {
+  height: 200px;
+  width: 200px;
+}
