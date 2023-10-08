@@ -1,14 +1,7 @@
 #contact_modal {
   display: none;
 }
-
-.photograph-header {
-  background-color: #fafafa;
-  height: 300px;
-  margin: 0 100px;
-}
-
-.contact_button {
+button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -16,14 +9,63 @@
   width: 170px;
   height: 70px;
   border: none;
-  background-color: #901c1c;
+  background-color: $color-primary;
   border-radius: 5px;
   cursor: pointer;
 }
 
+.photographer {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__info {
+    width: 33%;
+  }
+  &__name {
+    color: #d3573c;
+    font-size: 64px;
+  }
+  &__location {
+    color: $color-primary;
+
+    font-size: 24px;
+  }
+  &__tagline {
+    color: $color-tertiary;
+
+    font-size: 18px;
+  }
+  &__btn-wrapper {
+    text-align: center;
+    width: 33%;
+  }
+  &__img-container {
+    width: 33%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  &__img-wrapper {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    transform: scale(1.4);
+
+    object-fit: cover;
+  }
+}
+
 .modal {
   border-radius: 5px;
-  background-color: #db8876;
+  background-color: $color-secondary-btn;
   width: 50%;
   display: flex;
   flex-direction: column;

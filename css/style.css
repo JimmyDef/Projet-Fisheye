@@ -7,7 +7,13 @@
 }
 
 body {
+  max-width: 1440px;
+  margin: 0 auto;
   font-family: "DM Sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
 }
 
 header {
@@ -16,7 +22,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  margin: 0 100px 100px;
+  margin: 40px 100px 100px;
 }
 
 h1 {
@@ -29,11 +35,15 @@ h1 {
   height: 50px;
 }
 
-body {
-  max-width: 1440px;
-  margin: 0 auto;
+@media screen and (max-width: 850px) {
+  header {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
 }
-
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -48,28 +58,55 @@ body {
   text-align: center;
 }
 
-.photographer_section article h2 {
+.card__img-wrapper {
+  margin: 0 auto 20px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.card__img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transform: scale(1.3);
+}
+.card__h2 {
   color: #d3573c;
   font-size: 36px;
   font-weight: 400;
 }
-
-.photographer_section article img {
-  height: 200px;
-  width: 200px;
+.card__location {
+  margin-bottom: 5px;
+  color: #901c1c;
+  font-size: 13px;
+  font-style: normal;
+}
+.card__tagline {
+  color: #000;
+  margin-bottom: 5px;
+  font-size: 10px;
+}
+.card__price {
+  color: #757575;
+  font-size: 10px;
+}
+.card__sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 #contact_modal {
   display: none;
 }
 
-.photograph-header {
-  background-color: #fafafa;
-  height: 300px;
-  margin: 0 100px;
-}
-
-.contact_button {
+button {
   font-size: 20px;
   font-weight: bold;
   color: white;
@@ -80,6 +117,52 @@ body {
   background-color: #901c1c;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.photographer {
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  padding: 0 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.photographer__info {
+  width: 33%;
+}
+.photographer__name {
+  color: #d3573c;
+  font-size: 64px;
+}
+.photographer__location {
+  color: #901c1c;
+  font-size: 24px;
+}
+.photographer__tagline {
+  color: #525252;
+  font-size: 18px;
+}
+.photographer__btn-wrapper {
+  text-align: center;
+  width: 33%;
+}
+.photographer__img-container {
+  width: 33%;
+  display: flex;
+  justify-content: flex-end;
+}
+.photographer__img-wrapper {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.photographer__img {
+  width: 100%;
+  height: 100%;
+  transform: scale(1.4);
+  object-fit: cover;
 }
 
 .modal {

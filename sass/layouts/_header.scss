@@ -4,7 +4,7 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
-  margin: 0 100px 100px;
+  margin: 40px 100px 100px;
 }
 
 h1 {
@@ -17,5 +17,14 @@ h1 {
 
 .logo {
   height: 50px;
-  // margin-left: 100px;
+}
+
+@media screen and (max-width: 850px) {
+  header {
+    flex-direction: column;
+    margin-top: 50px;
+  }
+  .logo {
+    margin-bottom: 20px;
+  }
 }

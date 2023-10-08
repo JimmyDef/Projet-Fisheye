@@ -11,20 +11,43 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="./index.html" aria-label="Fisheye accueil">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
+      </a>
     </header>
     <main id="main">
-      <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contactez-moi
-        </button>
-      </div>
+      <section class="photographer" id="photographer">
+        <div class="photographer__info">
+          <h1 class="photographer__name" tabindex="0" id="h1"></h1>
+          <div tabindex="0">
+            <p class="photographer__location"></p>
+            <p class="photographer__tagline"></p>
+          </div>
+        </div>
+        <div class="photographer__btn-wrapper">
+          <button class="photographer__btn" id="open-modal">
+            Contactez-moi
+          </button>
+        </div>
+        <div class="photographer__img-container">
+          <div class="photographer__img-wrapper" tabindex="0">
+            <img class="photographer__img" />
+          </div>
+        </div>
+      </section>
+      <section class="media">
+        <div class="media__sorter"></div>
+        <!-- CARD -->
+        <!-- CARD -->
+        <!-- CARD -->
+        <!-- CARD -->
+      </section>
     </main>
     <div id="contact_modal">
       <div class="modal">
         <header>
           <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="close-modal" />
         </header>
         <form>
           <div>
@@ -35,7 +58,9 @@
         </form>
       </div>
     </div>
-    <script src="/scripts/pages/photographer.js"></script>
+    <script src="scripts/templates/photographer.js"></script>
+
+    <script type="module" src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
