@@ -1,19 +1,40 @@
 import { getData } from "../utils/modules.js";
 
-//Mettre le code JavaScript lié à la page photographer.html
 const url = new URL(window.location.href);
 const id = url.searchParams.get("id");
 
-//
-
-const displayPhotographer = (photographers) => {
-  const photographer = photographers.find((data) => data.id == id);
+const displayPhotographer = (photographer) => {
   photographerTemplate(photographer).userInfo();
 };
-const init = async () => {
-  const { photographers } = await getData("./../../data/photographers.json");
 
-  displayPhotographer(photographers);
+const displayMedia = async (media) => {
+  const mediaSection = document.getElementById("media-section");
+  const userMedia = media.filter((media) => media.photographerId == id);
+
+  userMedia.forEach((data) => {
+    // if (data.image) {
+    //   const mediaCardDom = new MediaFactory(data, "img");
+    //   mediaSection.appendChild(mediaCardDom);
+    // }
+    // if (data.video) {
+    //   const mediaCardDom = new MediaFactory(data, "video");
+    //   mediaSection.appendChild(mediaCardDom);
+    // }
+    const mediaModel = mediaTemplate(data);
+
+    const mediaCardDom = mediaModel.getMediaCardDom();
+    mediaSection.appendChild(mediaCardDom);
+  });
+};
+
+const init = async () => {
+  const { photographers, media } = await getData(
+    "./../../data/photographers.json"
+  );
+  const photographer = photographers.find((data) => data.id !== id);
+
+  displayPhotographer(photographer);
+  displayMedia(media);
 };
 
 init();
