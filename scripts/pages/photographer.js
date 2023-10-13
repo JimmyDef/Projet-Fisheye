@@ -10,16 +10,10 @@ const displayPhotographer = (photographer) => {
 const displayMedia = async (media) => {
   const mediaSection = document.getElementById("media-section");
   const userMedia = media.filter((media) => media.photographerId == id);
+  const totalLikes = userMedia.reduce((a, b) => b.likes + a, 0);
+  document.getElementById("total").textContent = totalLikes;
 
   userMedia.forEach((data) => {
-    // if (data.image) {
-    //   const mediaCardDom = new MediaFactory(data, "img");
-    //   mediaSection.appendChild(mediaCardDom);
-    // }
-    // if (data.video) {
-    //   const mediaCardDom = new MediaFactory(data, "video");
-    //   mediaSection.appendChild(mediaCardDom);
-    // }
     const mediaModel = mediaTemplate(data);
 
     const mediaCardDom = mediaModel.getMediaCardDom();

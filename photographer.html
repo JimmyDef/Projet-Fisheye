@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
   <head>
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -10,7 +10,7 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <header class="header-photographer">
       <a href="./index.html" aria-label="Fisheye accueil">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
       </a>
@@ -46,6 +46,11 @@
         </form>
         <div class="media__cards-container" id="media-section"></div>
       </section>
+      <aside class="total-and-price" id="total-and-price">
+        <span id="total" class="total-and-price__likes"> </span>
+        <i class="fa-solid fa-heart total-and-price__heart"></i>
+        <span id="price-per-day" class="total-and-price__price"></span>
+      </aside>
     </main>
     <div id="contact_modal">
       <div class="modal">

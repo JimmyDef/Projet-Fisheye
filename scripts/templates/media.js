@@ -25,7 +25,7 @@ const mediaTemplate = (data) => {
           <div class="media__info">
             <h2 class="media__title">${title}</h2>
             <div class="media__likes">
-              <span>${likes} </span><i class="fa-solid fa-heart" class="media__heart"></i>
+              <span class='media__likes-number'>${likes} </span><i class="fa-solid fa-heart media__heart" ></i>
             </div>
           </div>
           `;
@@ -34,15 +34,3 @@ const mediaTemplate = (data) => {
 
   return { getMediaCardDom };
 };
-
-// class MediaFactory {
-//   constructor(data, type) {
-//     if (type === "img") {
-//       return new getImgCardDOm(data);
-//     }
-//     if (type === "video") {
-//       return new getVideoCardDOm(data);
-//     }
-//     throw "Unknown format type";
-//   }
-// }

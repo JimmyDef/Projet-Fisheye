@@ -2,7 +2,7 @@
   display: none;
 }
 button {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: bold;
   color: white;
   padding: 11px;
@@ -11,13 +11,25 @@ button {
   border: none;
   background-color: $color-primary;
   border-radius: 5px;
+  transition: all 300ms;
   cursor: pointer;
+  &:hover {
+    background-color: $color-tertiary;
+    color: black;
+  }
+  &:focus {
+    background-color: $color-tertiary;
+    color: black;
+  }
 }
-
+main {
+  padding: 0 100px;
+  position: relative;
+}
 .photographer {
   background-color: #fafafa;
   height: 300px;
-  margin: 0 100px 30px;
+  margin: 0 0 30px;
   padding: 0 50px;
   display: flex;
   justify-content: space-between;
@@ -27,17 +39,17 @@ button {
   }
   &__name {
     color: #d3573c;
-    font-size: 64px;
+    font-size: 4rem;
   }
   &__location {
     color: $color-primary;
 
-    font-size: 24px;
+    font-size: 1.5rem;
   }
   &__tagline {
-    color: $color-tertiary;
+    color: $color-Quaternary;
 
-    font-size: 18px;
+    font-size: 1.125rem;
   }
   &__btn-wrapper {
     text-align: center;
@@ -64,33 +76,48 @@ button {
 }
 
 .media {
-  max-width: 1240px;
+  max-width: 1440px;
   margin: 0 auto;
+  color: $color-primary;
   form {
     margin-bottom: 58px;
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 700;
     label {
       margin-right: 30px;
     }
     select {
-      font-size: 26px;
+      font-size: 1.625rem;
     }
   }
   article {
     width: 350px;
   }
   &__cards-container {
-    display: grid;
-    justify-content: space-around;
-    align-items: flex-end;
-    // grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    grid-template-columns: 1fr 1fr 1fr;
-    // gap: 70px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+
+    @media screen and (max-width: 1330px) {
+      justify-content: center;
+      gap: 30px 50px;
+    }
   }
   &__wrapper {
-    width: 100%;
+    width: 350px;
     height: 300px;
+    position: relative;
+    &:has(video)::after {
+      fill: $color-primary;
+
+      position: absolute;
+
+      content: url(/assets/images/play-button.svg);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
   img {
     display: block;
@@ -100,19 +127,42 @@ button {
     height: 100%;
     object-fit: cover;
   }
+
   video {
     height: 100%;
     width: 100%;
     object-fit: cover;
-    &::after {
-      content: "";
-    }
+  }
+
+  &__info {
+    display: flex;
+
+    justify-content: space-between;
+    padding: 6px 0;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 400;
+  }
+  &__likes {
+    min-width: 60px;
+    text-align: end;
+  }
+  &__likes-number {
+    display: inline-block;
+    margin-right: 3px;
+    padding-top: 7px;
+  }
+  &__heart {
+    font-size: 1.125rem;
   }
 }
 
 .modal {
   border-radius: 5px;
-  background-color: $color-secondary-btn;
+  background-color: $color-Quaternary;
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -132,7 +182,7 @@ button {
 }
 
 .modal header h2 {
-  font-size: 64px;
+  font-size: 4rem;
   font-weight: normal;
   text-align: center;
 }

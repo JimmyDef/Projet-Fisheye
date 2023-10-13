@@ -2,10 +2,14 @@
 // @import "./utils/functions";
 // @import "./utils/mixins";
 
+// @import "./base/normalize";
 @import "./base/base";
 // @import "./base/typography";
+
 // @import "./components/buttons";
+@import "./components/likes-and-price-box";
 @import "./layouts/header";
+
 // @import "./layouts/nav";
 // @import "./layouts/container";
 // @import "./layouts/form";

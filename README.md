@@ -1,3 +1,5 @@
-# Base de code du projet P6 - Parcours Front-end
+# Projet 6 - OpenClassRooms
 
-## Démarrer le projet
+## Réalisé par Defains Jimmy
+
+https://github.com/JimmyDef
