@@ -1,4 +1,4 @@
-header {
+.header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,22 +8,38 @@ header {
   &.header-photographer {
     margin-bottom: 25px;
   }
+  h1 {
+    color: $color-primary;
+
+    font-size: 2.25rem;
+
+    font-weight: 400;
+  }
+  .logo {
+    height: 50px;
+  }
 }
-
-h1 {
-  color: $color-primary;
-
-  font-size: 2.25rem;
-
-  font-weight: 400;
-}
-
-.logo {
-  height: 50px;
+.modal {
+  &__header {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  &__h1 {
+    font-size: 3.3rem;
+    font-weight: normal;
+  }
+  &__img {
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+  }
 }
 
 @media screen and (max-width: 850px) {
-  header {
+  .header {
     flex-direction: column;
     margin-top: 50px;
   }

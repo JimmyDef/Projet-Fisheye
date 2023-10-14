@@ -10,35 +10,35 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header class="header-photographer">
-      <a href="./index.html" aria-label="Fisheye accueil">
+    <header class="header-photographer header">
+      <a href="./index.html" aria-label="Fisheye accueil" tabindex="1">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye logo" />
       </a>
     </header>
     <main id="main">
       <section class="photographer" id="photographer">
         <div class="photographer__info">
-          <h1 class="photographer__name" tabindex="0" id="h1"></h1>
-          <div tabindex="0">
+          <h1 class="photographer__name" tabindex="2" id="h1"></h1>
+          <div tabindex="3">
             <p class="photographer__location"></p>
             <p class="photographer__tagline"></p>
           </div>
         </div>
         <div class="photographer__btn-wrapper">
-          <button class="photographer__btn" id="open-modal">
+          <button class="photographer__btn" id="open-modal" tabindex="4">
             Contactez-moi
           </button>
         </div>
         <div class="photographer__img-container">
-          <div class="photographer__img-wrapper" tabindex="0">
+          <div class="photographer__img-wrapper" tabindex="5">
             <img class="photographer__img" />
           </div>
         </div>
       </section>
       <section class="media">
         <form class="media__form">
-          <label for="sorter">Trier par</label>
-          <select name="sorter" id="sorter">
+          <label for="sorter" tabindex="7">Trier par</label>
+          <select name="sorter" id="sorter" tabindex="8">
             <option value="popularity">Popularité</option>
             <option value="date">Date</option>
             <option value="Titre">Titre</option>
@@ -46,27 +46,44 @@
         </form>
         <div class="media__cards-container" id="media-section"></div>
       </section>
-      <aside class="total-and-price" id="total-and-price">
+      <aside class="total-and-price" id="total-and-price" tabindex="6">
         <span id="total" class="total-and-price__likes"> </span>
-        <i class="fa-solid fa-heart total-and-price__heart"></i>
+        <i
+          class="fa-solid fa-heart total-and-price__heart"
+          aria-label="likes"></i>
         <span id="price-per-day" class="total-and-price__price"></span>
       </aside>
     </main>
-    <div id="contact_modal">
+    <section id="contact_modal" class="background-modal" role="dialog" aria-hidden="true" aria-labelledby="modal-h1" tabindex="1">
       <div class="modal">
-        <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" id="close-modal" />
+        <header class="modal__header">
+          <h1 class="modal__h1" id="modal-h1" tabindex="2"></h1>
+          <img
+            src="assets/icons/close.svg"
+            id="close-modal"
+            alt="Fermer le formulaire" class="modal__img"/>
         </header>
-        <form>
-          <div>
-            <label>Prénom</label>
-            <input />
+        <form class="modal__form">
+          <div  class="modal__input-wrapper" tabindex="3">
+            <label for="fistname" >Prénom</label>
+            <input id="fistname" type="text" name="fistname" required/>
           </div>
-          <button class="contact_button">Envoyer</button>
+          <div  class="modal__input-wrapper">
+            <label for="lastname">Nom</label>
+            <input id="lastname" type="text" name="lastname" required />
+          </div >
+          <div class="modal__input-wrapper">
+            <label for="email">Email</label>
+            <input id="email" type="email" name="email"  required/>
+          </div>
+          <div class="modal__input-wrapper">
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" maxlength="100" required></textarea>
+          </div class="modal__input-wrapper">
+          <input type="submit" class="contact_button" value="Envoyer" />
         </form>
       </div>
-    </div>
+    </section>
     <script
       src="https://kit.fontawesome.com/6fecdd9ab9.js"
       crossorigin="anonymous"></script>

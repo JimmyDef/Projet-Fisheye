@@ -25,7 +25,7 @@ const mediaTemplate = (data) => {
           <div class="media__info">
             <h2 class="media__title">${title}</h2>
             <div class="media__likes">
-              <span class='media__likes-number'>${likes} </span><i class="fa-solid fa-heart media__heart" ></i>
+              <span class='media__likes-number'>${likes}  </span><i class="fa-solid fa-heart media__heart test" ></i>
             </div>
           </div>
           `;

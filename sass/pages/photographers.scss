@@ -1,27 +1,3 @@
-#contact_modal {
-  display: none;
-}
-button {
-  font-size: 1.25rem;
-  font-weight: bold;
-  color: white;
-  padding: 11px;
-  width: 170px;
-  height: 70px;
-  border: none;
-  background-color: $color-primary;
-  border-radius: 5px;
-  transition: all 300ms;
-  cursor: pointer;
-  &:hover {
-    background-color: $color-tertiary;
-    color: black;
-  }
-  &:focus {
-    background-color: $color-tertiary;
-    color: black;
-  }
-}
 main {
   padding: 0 100px;
   position: relative;
@@ -158,31 +134,4 @@ main {
   &__heart {
     font-size: 1.125rem;
   }
-}
-
-.modal {
-  border-radius: 5px;
-  background-color: $color-Quaternary;
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 35px;
-  margin: auto;
-}
-
-.modal header {
-  justify-content: space-between;
-  width: 100%;
-}
-
-.modal header img {
-  cursor: pointer;
-}
-
-.modal header h2 {
-  font-size: 4rem;
-  font-weight: normal;
-  text-align: center;
 }

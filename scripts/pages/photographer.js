@@ -67,7 +67,9 @@ const init = async () => {
   const { photographers, media } = await getData(
     "./../../data/photographers.json"
   );
-  const photographer = photographers.find((data) => data.id !== id);
+  const photographer = photographers.find((data) => data.id == id);
+
+  console.log("🚀 ~ init ~ photographer:", photographer);
 
   displayPhotographer(photographer);
   displayMedia(media);

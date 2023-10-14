@@ -41,6 +41,9 @@ function photographerTemplate(data) {
     img.src = picture;
     img.setAttribute("aria-labelledby", "h1");
     document.getElementById("price-per-day").textContent = `${price}€ / jour`;
+    document.getElementById(
+      "modal-h1"
+    ).innerHTML = `Contactez-moi </br> ${name}`;
   };
 
   return { name, picture, getUserCardDOM, userInfo };

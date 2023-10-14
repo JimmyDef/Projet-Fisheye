@@ -6,13 +6,13 @@
 @import "./base/base";
 // @import "./base/typography";
 
-// @import "./components/buttons";
+@import "./components/buttons";
 @import "./components/likes-and-price-box";
 @import "./layouts/header";
 
 // @import "./layouts/nav";
 // @import "./layouts/container";
-// @import "./layouts/form";
+@import "./layouts/modal";
 @import "./pages/index";
 @import "./pages/photographers";
 // @import "./pages/project";
