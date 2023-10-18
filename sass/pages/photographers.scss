@@ -9,6 +9,7 @@ main {
   padding: 0 50px;
   display: flex;
   justify-content: space-between;
+
   align-items: center;
   &__info {
     width: 33%;
@@ -66,7 +67,7 @@ main {
       font-size: 1.625rem;
     }
   }
-  article {
+  &__article {
     width: 350px;
   }
   &__cards-container {
@@ -86,10 +87,8 @@ main {
     position: relative;
     &:has(video)::after {
       fill: $color-primary;
-
       position: absolute;
-
-      content: url(/assets/images/play-button.svg);
+      content: url(/assets/icons/play-button.svg);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -123,7 +122,7 @@ main {
     font-weight: 400;
   }
   &__likes {
-    min-width: 60px;
+    width: 80px;
     text-align: end;
   }
   &__likes-number {
@@ -131,7 +130,13 @@ main {
     margin-right: 3px;
     padding-top: 7px;
   }
+
   &__heart {
     font-size: 1.125rem;
+    transition: all 250ms;
+    &--isLiked {
+      transform: scale(1.2);
+      color: #d3573c;
+    }
   }
 }

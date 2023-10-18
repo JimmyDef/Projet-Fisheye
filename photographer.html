@@ -41,7 +41,7 @@
           <select name="sorter" id="sorter" tabindex="8">
             <option value="popularity">Popularité</option>
             <option value="date">Date</option>
-            <option value="Titre">Titre</option>
+            <option value="title">Titre</option>
           </select>
         </form>
         <div class="media__cards-container" id="media-section"></div>
@@ -54,36 +54,48 @@
         <span id="price-per-day" class="total-and-price__price"></span>
       </aside>
     </main>
-    <section id="contact_modal" class="background-modal" role="dialog" aria-hidden="true" aria-labelledby="modal-h1" tabindex="1">
-      <div class="modal">
-        <header class="modal__header">
-          <h1 class="modal__h1" id="modal-h1" tabindex="2"></h1>
-          <img
+    <section id="contact_modal" class="background-modal"  aria-hidden="true" role="dialog"  aria-labelledby="modal-h1" tabindex="0">
+      <div class="modal"   >
+        <header class="modal__header" > 
+          <h1 class="modal__h1" id="modal-h1" tabindex="0"></h1>
+          <img tabindex="5"
             src="assets/icons/close.svg"
             id="close-modal"
-            alt="Fermer le formulaire" class="modal__img"/>
+            alt="Fermer le formulaire" class="modal__img" role="button"/>
         </header>
-        <form class="modal__form">
-          <div  class="modal__input-wrapper" tabindex="3">
-            <label for="fistname" >Prénom</label>
-            <input id="fistname" type="text" name="fistname" required/>
+        <form class="modal__form" id="modal-form">
+          <div  class="modal__input-wrapper" >
+            <label for="fistname" tabindex="1">Prénom</label>
+            <input id="fistname" type="text" name="fistname" required />
           </div>
           <div  class="modal__input-wrapper">
-            <label for="lastname">Nom</label>
+            <label for="lastname" tabindex="2">Nom</label>
             <input id="lastname" type="text" name="lastname" required />
           </div >
           <div class="modal__input-wrapper">
-            <label for="email">Email</label>
+            <label for="email" tabindex="3">Email</label>
             <input id="email" type="email" name="email"  required/>
           </div>
           <div class="modal__input-wrapper">
-            <label for="message">Votre message</label>
+            <label for="message" tabindex="4">Votre message</label>
             <textarea id="message" name="message" maxlength="100" required></textarea>
           </div class="modal__input-wrapper">
-          <input type="submit" class="contact_button" value="Envoyer" />
+          <input type="submit" class="contact_button" value="Envoyer" tabindex="0" id="submitBtn"/>
         </form>
       </div>
     </section>
+    <!-- <section id="lightbox"   class="background-lightbox" >
+      <article class="lightbox__card">
+        <div>
+          <img src="" alt="media précédent">
+          <div class="lightbox__media"></div>
+          <img src="" alt="media suivant">
+        </div>
+        <h2 class="lightbox__title"></h2>
+        <img src="" alt="Fermer le " class="lightbox__cross-img">
+
+      </article>
+    </section> -->
     <script
       src="https://kit.fontawesome.com/6fecdd9ab9.js"
       crossorigin="anonymous"></script>

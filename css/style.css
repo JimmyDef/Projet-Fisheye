@@ -115,21 +115,25 @@ button:focus,
 .background-modal {
   display: none;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: auto;
   background-color: white;
 }
 
 .modal {
+  position: relative;
   border-radius: 5px;
   background-color: #d3573c;
-  width: 50%;
+  width: clamp(450px, 50%, 600px);
   display: flex;
   flex-direction: column;
   padding: 35px;
-  margin: 60px auto;
+  margin: 40px auto;
+  animation: modalopen 350ms;
 }
 .modal__input-wrapper {
   display: flex;
@@ -159,6 +163,48 @@ button:focus,
   font-size: 1.2rem;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+.background-lightbox {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(156, 238, 131);
+}
+
+.lightbox__card {
+  position: relative;
+  border-radius: 5px;
+  background-color: rgb(238, 176, 176);
+  width: 1240px;
+  display: flex;
+  flex-direction: column;
+  margin: 60px auto;
+  animation: modalopen 350ms;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -284,7 +330,7 @@ main {
 .media form select {
   font-size: 1.625rem;
 }
-.media article {
+.media__article {
   width: 350px;
 }
 .media__cards-container {
@@ -307,7 +353,7 @@ main {
 .media__wrapper:has(video)::after {
   fill: #901c1c;
   position: absolute;
-  content: url(/assets/images/play-button.svg);
+  content: url(/assets/icons/play-button.svg);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -335,7 +381,7 @@ main {
   font-weight: 400;
 }
 .media__likes {
-  min-width: 60px;
+  width: 80px;
   text-align: end;
 }
 .media__likes-number {
@@ -345,6 +391,11 @@ main {
 }
 .media__heart {
   font-size: 1.125rem;
+  transition: all 250ms;
+}
+.media__heart--isLiked {
+  transform: scale(1.2);
+  color: #d3573c;
 }
 
 /*# sourceMappingURL=style.css.map */
