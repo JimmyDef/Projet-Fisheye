@@ -25,7 +25,7 @@
           </div>
         </div>
         <div class="photographer__btn-wrapper">
-          <button class="photographer__btn" id="open-modal" tabindex="4">
+          <button class="photographer__btn btn" id="open-modal" tabindex="4">
             Contactez-moi
           </button>
         </div>
@@ -57,11 +57,8 @@
     <section id="contact_modal" class="background-modal"  aria-hidden="true" role="dialog"  aria-labelledby="modal-h1" tabindex="0">
       <div class="modal"   >
         <header class="modal__header" > 
-          <h1 class="modal__h1" id="modal-h1" tabindex="0"></h1>
-          <img tabindex="5"
-            src="assets/icons/close.svg"
-            id="close-modal"
-            alt="Fermer le formulaire" class="modal__img" role="button"/>
+          <h2 class="modal__h2" id="modal-h2" tabindex="0"></h2>
+          
         </header>
         <form class="modal__form" id="modal-form">
           <div  class="modal__input-wrapper" >
@@ -80,7 +77,11 @@
             <label for="message" tabindex="4">Votre message</label>
             <textarea id="message" name="message" maxlength="100" required></textarea>
           </div class="modal__input-wrapper">
-          <input type="submit" class="contact_button" value="Envoyer" tabindex="0" id="submitBtn"/>
+          <input type="submit" class="contact_button" value="Envoyer"  id="submitBtn"/>
+         <img  
+            src="assets/icons/close.svg"
+            
+            alt="Fermer le formulaire" class="modal__img" id="close-modal" tabindex="0" role="button"/>
         </form>
       </div>
     </section>

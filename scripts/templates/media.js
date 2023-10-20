@@ -1,5 +1,5 @@
 const mediaTemplate = (data) => {
-  let { title, image, video, likes, photographerId, id } = data;
+  let { title, image, video, likes, photographerId, id, isLiked } = data;
   const imageUrl = `assets/images/${photographerId}/${image}`;
   const videoUrl = `assets/images/${photographerId}/${video}`;
 
@@ -31,8 +31,11 @@ const mediaTemplate = (data) => {
           </div>
           <div class="media__info">
             <h2 class="media__title">${title}</h2>
-            <div class="media__likes">
-              <span class='media__likes-number'>${likes}  </span> <i class="fa-solid fa-heart media__heart " > 
+            <div class="media__likes" data-id=${id}>
+              <span class='media__likes-number'>${likes} 
+               </span> <i class="fa-solid fa-heart media__heart ${
+                 isLiked ? "media__heart--isLiked" : ""
+               }" > 
               </i>
               
 

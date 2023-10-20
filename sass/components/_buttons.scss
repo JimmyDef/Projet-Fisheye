@@ -1,4 +1,4 @@
-button,
+.btn,
 .contact_button {
   font-size: 1.25rem;
   font-weight: bold;
@@ -19,4 +19,14 @@ button,
     background-color: $color-tertiary;
     color: black;
   }
+}
+.modal__img {
+  position: absolute;
+  background-color: unset;
+  border: none;
+  top: 44px;
+  right: 30px;
+  height: 40px;
+  width: 40px;
+  cursor: pointer;
 }

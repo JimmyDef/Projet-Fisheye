@@ -27,15 +27,13 @@
     align-items: center;
     width: 100%;
   }
-  &__h1 {
-    font-size: 3.3rem;
+  &__h2 {
+    font-size: 3rem;
     font-weight: normal;
   }
-  &__img {
-    height: 60px;
-    width: 60px;
-    cursor: pointer;
-  }
+  // &__img {
+
+  // }
 }
 
 @media screen and (max-width: 850px) {

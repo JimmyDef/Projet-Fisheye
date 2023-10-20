@@ -25,9 +25,11 @@ openModal.addEventListener("click", function () {
   onOpenModal();
 });
 
-closeModal.addEventListener("click", function () {
+closeModal.addEventListener("click", function (e) {
+  e.preventDefault;
   onCloseModal();
 });
+
 submitBtn.addEventListener("click", function (e) {
   e.preventDefault();
   onCloseModal();

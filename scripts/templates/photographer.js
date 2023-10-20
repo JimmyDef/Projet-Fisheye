@@ -42,7 +42,7 @@ function photographerTemplate(data) {
     img.setAttribute("aria-labelledby", "h1");
     document.getElementById("price-per-day").textContent = `${price}€ / jour`;
     document.getElementById(
-      "modal-h1"
+      "modal-h2"
     ).innerHTML = `Contactez-moi </br> ${name}`;
   };
 
