@@ -1,27 +1,50 @@
 .background-lightbox {
-  // display: block;
-  // position: fixed;
+  display: block;
+  position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  // overflow: auto;
+  overflow: auto;
   background-color: rgb(156, 238, 131);
 }
 .lightbox {
   &__card {
-    position: relative;
+    // position: relative;
+    // margin: auto;
     border-radius: 5px;
     background-color: rgb(238, 176, 176);
-    width: 1240px;
+
     display: flex;
     flex-direction: column;
 
     margin: 60px auto;
-    animation: modalopen 350ms;
+  }
+  &__slideshow {
+    display: flex;
+    margin: auto;
+  }
+  &__prev {
+    transform: rotate(0.5turn);
+  }
+  &__close-btn {
+    width: 40px;
+    height: 40px;
+    // display: block;
+  }
+  &__media-wrapper {
+    border: 3px solid black;
+    width: clamp(150px, 70vw, 1000px);
+    height: clamp(160px, 50vw, 800px);
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
+
 @keyframes modalopen {
   from {
     opacity: 0;

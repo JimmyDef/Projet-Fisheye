@@ -65,6 +65,27 @@ const mediaTemplate = (data) => {
 
     return article;
   };
+  // const getLightboxCard2 = () => {
+  //   const article = document.createElement("article");
+  //   const h2 = document.getElementById("lightbox-title");
+  //   const article = document.createElement("article");
+  //   article.className = "lightbox__article";
+  //   article.innerHTML = `
+  //         <div class="media__wrapper" data-id=${id}>
+  //         ${switchMediaType()}
+  //         </div>
+  //         <div class="media__info">
+  //           <h2 class="media__title">${title}</h2>
+  //           <div class="media__likes">
+  //             <span class='media__likes-number'>${likes}  </span> <i class="fa-solid fa-heart media__heart " >
+  //             </i>
+
+  //           </div>
+  //         </div>
+  //         `;
+
+  //   return article;
+  // };
 
   return { getMediaCardDom, getLightboxCard };
 };
