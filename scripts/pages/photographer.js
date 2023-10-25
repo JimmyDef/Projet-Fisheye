@@ -1,10 +1,18 @@
 import { getData } from "../utils/modules.js";
-const mediaSection = document.getElementById("media-section");
-const selectBtn = document.getElementById("sorter");
+import { openLightbox } from "./../utils/lightbox_modal.js";
 
+// Elements du DOM--------------------
+const mediaSection = document.getElementById("media-section");
+const prevBtn = document.getElementById("prev-media");
+const nextBtn = document.getElementById("next-media");
+const mediaWrapper = document.getElementById("media-wrapper");
+const lightboxModal = document.getElementById("lightbox");
+
+// -----------------------------------
 const url = new URL(window.location.href);
 const id = url.searchParams.get("id");
 let userMedia = [];
+const selectBtn = document.getElementById("sorter");
 
 //-----------------------------------------------------
 // Fonction initialisation de la page
@@ -15,14 +23,18 @@ const initPage = async () => {
   );
   const photographer = photographers.find((data) => data.id == id);
   userMedia = media.filter((media) => media.photographerId == id);
-
+  // Tri popularité par défault
+  userMedia.sort((a, b) => b.likes - a.likes);
+  // --------------------------
   //--------------------------------------
   // Création des infos photographe
   photographerTemplate(photographer).userInfo();
   // --------------------------------------
   renderMedia();
   displaylikes();
-  sortMedia();
+
+  openLightboxOnClick();
+  selectBtn.addEventListener("change", sortMedia);
 };
 
 //-----------------------------------------------------
@@ -46,24 +58,20 @@ const renderMedia = () => {
 const sortMedia = () => {
   const selectedValue = selectBtn.value;
 
-  // Tri popularité par défault
-  userMedia.sort((a, b) => b.likes - a.likes);
-  // --------------------------
+  console.log('"test');
+  if (selectedValue == "title") {
+    userMedia.sort((a, b) => a.title.localeCompare(b.title));
+  }
+  if (selectedValue == "popularity") {
+    userMedia.sort((a, b) => b.likes - a.likes);
+  }
+  if (selectedValue == "date") {
+    userMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
 
-  selectBtn.addEventListener("change", function () {
-    if (selectedValue == "title") {
-      userMedia.sort((a, b) => a.title.localeCompare(b.title));
-    }
-    if (selectedValue == "popularity") {
-      userMedia.sort((a, b) => b.likes - a.likes);
-    }
-    if (selectedValue == "date") {
-      userMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
-    }
-
-    renderMedia();
-    displaylikes();
-  });
+  renderMedia();
+  displaylikes();
+  openLightboxOnClick();
 };
 
 //-----------------------------------------------------
@@ -78,9 +86,8 @@ const displaylikes = () => {
     const heart = likesNb.nextElementSibling;
     const dataId = likesBox.dataset.id;
     const media = userMedia.find((elt) => elt.id == dataId);
-    // const mediaIndex = userMedia.findIndex((elt) => elt.id == dataId);
 
-    likesBox.addEventListener("click", function () {
+    likesBox.addEventListener("click", () => {
       if (media.isLiked === undefined || media.isLiked === false) {
         likesNb.textContent = parseInt(likesNb.textContent) + 1;
         media.likes++;
@@ -101,10 +108,67 @@ const displaylikes = () => {
   });
   const updateTotalLikes = () => {
     const likesTotal = userMedia.reduce((a, b) => parseInt(b.likes) + a, 0);
-
     document.getElementById("total").textContent = likesTotal;
   };
   updateTotalLikes();
+};
+
+//-----------------------------------------------------
+// Fonction gestion lightbox
+//-----------------------------------------------------
+
+const openLightboxOnClick = () => {
+  const links = document.querySelectorAll(".lightbox__link");
+
+  let mediaIndex = null;
+  links.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      openLightbox();
+      const mediaId = link.dataset.id;
+      mediaIndex = userMedia.findIndex((elt) => elt.id == mediaId);
+      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+    });
+  });
+  const previousMedia = () => {
+    if (mediaIndex === 0) {
+      mediaIndex = userMedia.length - 1;
+      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+    } else {
+      mediaIndex--;
+      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+    }
+    mediaWrapper.focus();
+  };
+  const nextMedia = () => {
+    if (mediaIndex === userMedia.length - 1) {
+      mediaIndex = 0;
+      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+    } else {
+      mediaIndex++;
+      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+    }
+    mediaWrapper.focus();
+  };
+
+  prevBtn.addEventListener("click", () => {
+    previousMedia();
+  });
+  nextBtn.addEventListener("click", () => {
+    nextMedia();
+  });
+  // -----------------------------------------------------
+  // Ecoute "Echape" pour fermer modal
+  document.addEventListener("keydown", (e) => {
+    const isModalOpen = lightboxModal.getAttribute("aria-hidden");
+    if (isModalOpen === "false" && e.key === "ArrowLeft") {
+      console.log("test");
+      previousMedia();
+    }
+    if (isModalOpen === "false" && e.key === "ArrowRight") {
+      nextMedia();
+    }
+  });
 };
 
 initPage();

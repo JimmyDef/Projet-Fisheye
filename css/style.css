@@ -183,7 +183,7 @@ a {
   }
 }
 .background-lightbox {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   top: 0;
@@ -191,36 +191,62 @@ a {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(156, 238, 131);
+  background-color: rgb(255, 255, 255);
 }
 
 .lightbox__card {
-  border-radius: 5px;
-  background-color: rgb(238, 176, 176);
   display: flex;
   flex-direction: column;
   margin: 60px auto;
 }
 .lightbox__slideshow {
   display: flex;
+  align-items: center;
   margin: auto;
+  position: relative;
+}
+.lightbox__prev-wrapper {
+  width: 96px;
 }
 .lightbox__prev {
   transform: rotate(0.5turn);
+  cursor: pointer;
+  order: 1;
 }
-.lightbox__close-btn {
-  width: 40px;
-  height: 40px;
+.lightbox__next {
+  cursor: pointer;
+  order: 3;
 }
 .lightbox__media-wrapper {
-  border: 3px solid black;
+  box-shadow: 2px 2px 20px -7px #000000;
   width: clamp(150px, 70vw, 1000px);
   height: clamp(160px, 50vw, 800px);
+  order: 2;
 }
 .lightbox__media-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 5px;
+}
+.lightbox__media-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.lightbox__title {
+  margin: 20px auto;
+  width: clamp(150px, 70vw, 1000px);
+  color: #901c1c;
+}
+.lightbox__close-btn {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 30px;
 }
 
 @keyframes modalopen {

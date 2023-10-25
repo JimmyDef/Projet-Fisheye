@@ -46,7 +46,7 @@
         </form>
         <div class="media__cards-container" id="media-section"></div>
       </section>
-      <aside class="total-and-price" id="total-and-price" tabindex="6">
+      <aside class="total-and-price" id="total-and-price" tabindex="6" id="total-and-price">
         <span id="total" class="total-and-price__likes"> </span>
         <i
           class="fa-solid fa-heart total-and-price__heart"
@@ -85,15 +85,18 @@
         </form>
       </div>
     </section>
-    <section id="lightbox"   class="background-lightbox">
+    <section id="lightbox"   class="background-lightbox" aria-hidden="true" role="dialog"  aria-label="vue rapprochée" tabindex="0">
       <article class="lightbox__card">
         <div class="lightbox__slideshow">
-          <img src="assets/icons/chevron.svg" alt="media précédent" class="lightbox__prev" role="link">
-          <div class="lightbox__media-wrapper"></div>
-          <img src="assets/icons/chevron.svg"  alt="media suivant" class="lightbox__next" role="link">
+          <div class="lightbox__media-wrapper" id="media-wrapper" tabindex="0"></div><div class="lightbox__prev-wrapper">
+          <img src="assets/icons/chevron.svg" alt="media précédent" class="lightbox__prev" role="button" id="prev-media" tabindex="0">
+          </div>
+          <img src="assets/icons/chevron.svg"  alt="media suivant" class="lightbox__next" role="button" id="next-media" tabindex="0">
+          <img src="assets/icons/close-red.svg" alt="Fermer le diaporama" class="lightbox__close-btn" fill="#911C1C" role="button" id="close-lightbox" tabindex="0">
         </div>
-        <h2 class="lightbox__title" id="lightbox-title"></h2>
-<img src="assets/icons/close-red.svg" alt="Fermer le diaporama" class="lightbox__close-btn" fill="#911C1C" role="button">
+        <h2 class="lightbox__title" id="lightbox-title" ></h2>
+     
+
 
       </article>
     </section>
@@ -104,6 +107,7 @@
     <script src="scripts/templates/media.js"></script>
 
     <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/contact_modal.js"></script>
+    <script type="module" src="/scripts/utils/lightbox_modal.js"></script>
   </body>
 </html>

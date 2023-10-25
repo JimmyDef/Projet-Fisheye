@@ -3,89 +3,75 @@ const mediaTemplate = (data) => {
   const imageUrl = `assets/images/${photographerId}/${image}`;
   const videoUrl = `assets/images/${photographerId}/${video}`;
 
-  // --------------------
-  // Fonction gestion du type de média
-  // --------------------
+  // -----------------------------------------------------
+  // Fonction gestion du type de média galerie
+  // -----------------------------------------------------
 
-  const switchMediaType = () => {
+  const mediaSwitcherGallery = () => {
     if (data.image) {
       return `<img src="${imageUrl}" alt="${title}" />`;
     }
     if (data.video) {
       return ` <video   />
-            <source src="${videoUrl}" >
+            <source src="${videoUrl}" alt="${title}">
             </video>`;
     }
     throw new Error("Absence de fichier media");
   };
-  // ---------------------
+
+  // -----------------------------------------------------
   // Fonction création du contenu des cards
-  // ---------------------
+  // -----------------------------------------------------
 
   const getMediaCardDom = () => {
     const article = document.createElement("article");
     article.className = "media__article";
-    article.innerHTML = ` 
-          <div class="media__wrapper" data-id=${id}>
-          ${switchMediaType()}
-          </div>
+    article.innerHTML = ` <a href="#" class="lightbox__link" data-id=${id}>
+          <div class="media__wrapper" >
+          ${mediaSwitcherGallery()}
+          </div> </a>
           <div class="media__info">
             <h2 class="media__title">${title}</h2>
+           
             <div class="media__likes" data-id=${id}>
               <span class='media__likes-number'>${likes} 
-               </span> <i class="fa-solid fa-heart media__heart ${
+               </span> <i aria-label="likes" class="fa-solid fa-heart media__heart ${
                  isLiked ? "media__heart--isLiked" : ""
                }" > 
               </i>
-              
-
             </div>
           </div>
           `;
 
     return article;
   };
+
+  // -----------------------------------------------------
+  // Fonction gestion du type de média lightbox
+  // -----------------------------------------------------
+
+  const mediaSwitcherLightbox = () => {
+    if (data.image) {
+      return `<img src="${imageUrl}" alt="${title}" />`;
+    }
+    if (data.video) {
+      return ` <video  controls >
+            <source src="${videoUrl}" alt="${title}" >
+            </video>`;
+    }
+    throw new Error("Absence de fichier media");
+  };
+
+  // -----------------------------------------------------
+  // Fonction création du contenu lightbox
+  // -----------------------------------------------------
+
   const getLightboxCard = () => {
-    const article = document.createElement("article");
-    article.className = "lightbox__article";
-    article.innerHTML = ` 
-          <div class="media__wrapper" data-id=${id}>
-          ${switchMediaType()}
-          </div>
-          <div class="media__info">
-            <h2 class="media__title">${title}</h2>
-            <div class="media__likes">
-              <span class='media__likes-number'>${likes}  </span> <i class="fa-solid fa-heart media__heart " > 
-              </i>
-              
-
-            </div>
-          </div>
-          `;
-
-    return article;
+    const h2 = document.getElementById("lightbox-title");
+    h2.textContent = `${title}`;
+    const mediaWrapper = document.getElementById("media-wrapper");
+    mediaWrapper.innerHTML = ` ${mediaSwitcherLightbox()}`;
   };
-  // const getLightboxCard2 = () => {
-  //   const article = document.createElement("article");
-  //   const h2 = document.getElementById("lightbox-title");
-  //   const article = document.createElement("article");
-  //   article.className = "lightbox__article";
-  //   article.innerHTML = `
-  //         <div class="media__wrapper" data-id=${id}>
-  //         ${switchMediaType()}
-  //         </div>
-  //         <div class="media__info">
-  //           <h2 class="media__title">${title}</h2>
-  //           <div class="media__likes">
-  //             <span class='media__likes-number'>${likes}  </span> <i class="fa-solid fa-heart media__heart " >
-  //             </i>
-
-  //           </div>
-  //         </div>
-  //         `;
-
-  //   return article;
-  // };
 
   return { getMediaCardDom, getLightboxCard };
 };
