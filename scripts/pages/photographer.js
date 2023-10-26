@@ -1,12 +1,13 @@
 import { getData } from "../utils/modules.js";
-import { openLightbox } from "./../utils/lightbox_modal.js";
-
+import { onOpenModal, onCloseModal } from "./../utils/contact_modal.js";
 // Elements du DOM--------------------
 const mediaSection = document.getElementById("media-section");
-const prevBtn = document.getElementById("prev-media");
-const nextBtn = document.getElementById("next-media");
 const mediaWrapper = document.getElementById("media-wrapper");
 const lightboxModal = document.getElementById("lightbox");
+// Dom Buttons  ----------
+const prevBtn = document.getElementById("prev-media");
+const nextBtn = document.getElementById("next-media");
+const closeLightboxBtn = document.getElementById("close-lightbox");
 
 // -----------------------------------
 const url = new URL(window.location.href);
@@ -150,32 +151,46 @@ const openLightboxOnClick = () => {
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
-      openLightbox();
+      onOpenModal(lightboxModal);
+
       const mediaId = link.dataset.id;
       mediaIndex = userMedia.findIndex((elt) => elt.id == mediaId);
       mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
     });
   });
+};
+// -----------------------------------------------------
+// Ecoute des boutons lightox
+prevBtn.addEventListener("click", () => {
+  previousMedia(mediaIndex);
+});
+nextBtn.addEventListener("click", () => {
+  nextMedia(mediaIndex);
+});
+closeLightboxBtn.addEventListener("click", () => {
+  onCloseModal(lightboxModal);
+  focusLastMedia();
+});
+// -----------------------------------------------------
+// Gestion navigation clavier lightox
 
-  prevBtn.addEventListener("click", () => {
-    previousMedia(mediaIndex);
-  });
-  nextBtn.addEventListener("click", () => {
-    nextMedia(mediaIndex);
-  });
-
-  // -----------------------------------------------------
-  // Gestion navigation clavier lightox
-
-  document.addEventListener("keydown", (e) => {
-    const isModalOpen = lightboxModal.getAttribute("aria-hidden");
-    if (isModalOpen === "false" && e.key === "ArrowLeft") {
-      previousMedia(mediaIndex);
-    }
-    if (isModalOpen === "false" && e.key === "ArrowRight") {
-      nextMedia(mediaIndex);
-    }
-  });
+const focusLastMedia = () => {
+  const lastMediaId = userMedia[mediaIndex].id;
+  const lastMediaOpened = document.querySelector(`[data-id="${lastMediaId}"]`);
+  lastMediaOpened.focus();
 };
 
+document.addEventListener("keydown", (e) => {
+  const isModalOpen = lightboxModal.getAttribute("aria-hidden");
+  if (isModalOpen === "false" && e.key === "ArrowLeft") {
+    previousMedia(mediaIndex);
+  }
+  if (isModalOpen === "false" && e.key === "ArrowRight") {
+    nextMedia(mediaIndex);
+  }
+  if (isModalOpen === "false" && e.key === "Escape") {
+    onCloseModal(lightboxModal);
+    focusLastMedia();
+  }
+});
 initPage();

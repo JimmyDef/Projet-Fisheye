@@ -7,7 +7,6 @@ const mainSection = document.querySelector("main");
 // Dom Buttons  ----------------------------------------
 const openModalBtn = document.getElementById("open-modal");
 const closeModalBtn = document.getElementById("close-modal");
-
 const submitBtn = document.getElementById("submitBtn");
 
 // -----------------------------------------------------
@@ -43,6 +42,7 @@ openModalBtn.addEventListener("click", () => {
 closeModalBtn.addEventListener("click", (e) => {
   e.preventDefault();
   onCloseModal(contactModal);
+  openModalBtn.focus();
 });
 // -----------------------------------------------------
 // Ecoute "Echape" pour fermer modal
@@ -50,6 +50,7 @@ document.addEventListener("keydown", (e) => {
   const isModalOpen = contactModal.getAttribute("aria-hidden");
   if (isModalOpen === "false" && e.key === "Escape") {
     onCloseModal(contactModal);
+    openModalBtn.focus();
   }
 });
 

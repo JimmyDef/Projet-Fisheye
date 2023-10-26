@@ -3,7 +3,7 @@ function photographerTemplate(data) {
 
   const picture = `assets/photographers/${portrait}`;
 
-  function getUserCardDOM() {
+  const getUserCardDOM = () => {
     const article = document.createElement("article");
 
     const link = document.createElement("a");
@@ -27,7 +27,7 @@ function photographerTemplate(data) {
     article.appendChild(txtWrapper);
 
     return article;
-  }
+  };
   const userInfo = () => {
     document.getElementById("h1").textContent = name;
 

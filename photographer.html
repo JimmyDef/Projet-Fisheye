@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="FR">
   <head>
     <link href="./css/style.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
@@ -78,10 +78,10 @@
             <textarea id="message" name="message" maxlength="100" required></textarea>
           </div class="modal__input-wrapper">
           <input type="submit" class="contact_button" value="Envoyer"  id="submitBtn"/>
-         <img  
+         <button tabindex="0" id="close-modal" class="modal__close-btn"><img  
             src="assets/icons/close.svg"
             
-            alt="Fermer le formulaire" class="modal__img" id="close-modal" tabindex="0" role="button"/>
+            alt="Fermer le formulaire" class="modal__img"  tabindex="0"/></button>
         </form>
       </div>
     </section>
@@ -108,8 +108,8 @@
     <script src="scripts/templates/photographer.js"></script>
     <script src="scripts/templates/media.js"></script>
 
-    <script type="module" src="/scripts/pages/photographer.js"></script>
-    <script type="module" src="/scripts/utils/contact_modal.js"></script>
-    <script type="module" src="/scripts/utils/lightbox_modal.js"></script>
+    <script type="module" src="./scripts/pages/photographer.js"></script>
+    <script type="module" src="./scripts/utils/contact_modal.js"></script>
+
   </body>
 </html>

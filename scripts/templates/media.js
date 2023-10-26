@@ -27,13 +27,13 @@ const mediaTemplate = (data) => {
     const article = document.createElement("article");
     article.className = "media__article";
     article.innerHTML = ` 
-          <div class="media__wrapper lightbox__link" role="link" aria-label="${title}, vue rapprochée"data-id=${id} tabindex="0">
+          <a href="#" class="media__wrapper lightbox__link"  aria-label="${title}, vue rapprochée"data-id=${id} tabindex="0">
           ${mediaSwitcherGallery()}
-          </div> 
+          </a> 
           <div class="media__info">
-            <h2 class="media__title">${title}</h2>
+            <h2 class="media__title" tabindex="0">${title}</h2>
            
-            <div class="media__likes" data-id=${id}>
+            <div class="media__likes" data-id=${id} tabindex="0">
               <span class='media__likes-number'>${likes} 
                </span> <i aria-label="likes" class="fa-solid fa-heart media__heart ${
                  isLiked ? "media__heart--isLiked" : ""

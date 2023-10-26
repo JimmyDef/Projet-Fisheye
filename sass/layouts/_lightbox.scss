@@ -36,7 +36,6 @@
   &__media-wrapper {
     z-index: 2;
     box-shadow: 2px 2px 20px -7px #000000;
-
     width: clamp(150px, 70vw, 1000px);
     height: clamp(160px, 50vw, 800px);
     order: 2;
@@ -56,14 +55,12 @@
   &__title {
     margin: 20px auto;
     width: clamp(150px, 70vw, 1000px);
-
     color: $color-primary;
   }
 
   &__close-btn {
     width: 40px;
     height: 40px;
-
     position: absolute;
     top: 20px;
     right: 30px;

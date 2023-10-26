@@ -86,9 +86,11 @@ main {
     }
   }
   &__wrapper {
+    display: block;
     width: 350px;
     height: 300px;
     position: relative;
+    cursor: pointer;
     &:has(video)::after {
       fill: $color-primary;
       position: absolute;
@@ -129,6 +131,7 @@ main {
   &__likes {
     width: 80px;
     text-align: end;
+    cursor: pointer;
   }
   &__likes-number {
     display: inline-block;
