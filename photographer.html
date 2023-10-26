@@ -88,11 +88,13 @@
     <section id="lightbox"   class="background-lightbox" aria-hidden="true" role="dialog"  aria-label="vue rapprochée" tabindex="0">
       <article class="lightbox__card">
         <div class="lightbox__slideshow">
-          <div class="lightbox__media-wrapper" id="media-wrapper" tabindex="0"></div><div class="lightbox__prev-wrapper">
-          <img src="assets/icons/chevron.svg" alt="media précédent" class="lightbox__prev" role="button" id="prev-media" tabindex="0">
-          </div>
-          <img src="assets/icons/chevron.svg"  alt="media suivant" class="lightbox__next" role="button" id="next-media" tabindex="0">
-          <img src="assets/icons/close-red.svg" alt="Fermer le diaporama" class="lightbox__close-btn" fill="#911C1C" role="button" id="close-lightbox" tabindex="0">
+          <div class="lightbox__media-wrapper" id="media-wrapper" tabindex="0"></div>
+          <button id="prev-media" class="lightbox__prev lightbox__btn " ><img src="assets/icons/chevron.svg" alt="media précédent"    ></button>
+          <button class="lightbox__next lightbox__btn " id="next-media"><img src="assets/icons/chevron.svg"  alt="media suivant"   ></button>
+          
+          
+          <button id="close-lightbox" tabindex="0" class="lightbox__close-btn lightbox__btn "><img src="assets/icons/close-red.svg" alt="Fermer le diaporama"  fill="#911C1C"   ></button>
+          
         </div>
         <h2 class="lightbox__title" id="lightbox-title" ></h2>
      

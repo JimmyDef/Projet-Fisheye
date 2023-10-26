@@ -12,8 +12,8 @@ const mediaTemplate = (data) => {
       return `<img src="${imageUrl}" alt="${title}" />`;
     }
     if (data.video) {
-      return ` <video   />
-            <source src="${videoUrl}" alt="${title}">
+      return ` <video  aria-label="${title}" tabindex="-1">
+            <source src="${videoUrl}"  type="video/mp4">
             </video>`;
     }
     throw new Error("Absence de fichier media");
@@ -26,10 +26,10 @@ const mediaTemplate = (data) => {
   const getMediaCardDom = () => {
     const article = document.createElement("article");
     article.className = "media__article";
-    article.innerHTML = ` <a href="#" class="lightbox__link" data-id=${id}>
-          <div class="media__wrapper" >
+    article.innerHTML = ` 
+          <div class="media__wrapper lightbox__link" role="link" aria-label="${title}, vue rapprochée"data-id=${id} tabindex="0">
           ${mediaSwitcherGallery()}
-          </div> </a>
+          </div> 
           <div class="media__info">
             <h2 class="media__title">${title}</h2>
            

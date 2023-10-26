@@ -12,6 +12,8 @@ const lightboxModal = document.getElementById("lightbox");
 const url = new URL(window.location.href);
 const id = url.searchParams.get("id");
 let userMedia = [];
+let mediaIndex;
+
 const selectBtn = document.getElementById("sorter");
 
 //-----------------------------------------------------
@@ -25,14 +27,13 @@ const initPage = async () => {
   userMedia = media.filter((media) => media.photographerId == id);
   // Tri popularité par défault
   userMedia.sort((a, b) => b.likes - a.likes);
-  // --------------------------
+
   //--------------------------------------
   // Création des infos photographe
   photographerTemplate(photographer).userInfo();
   // --------------------------------------
   renderMedia();
   displaylikes();
-
   openLightboxOnClick();
   selectBtn.addEventListener("change", sortMedia);
 };
@@ -58,7 +59,6 @@ const renderMedia = () => {
 const sortMedia = () => {
   const selectedValue = selectBtn.value;
 
-  console.log('"test');
   if (selectedValue == "title") {
     userMedia.sort((a, b) => a.title.localeCompare(b.title));
   }
@@ -114,13 +114,39 @@ const displaylikes = () => {
 };
 
 //-----------------------------------------------------
+// Fonction media précédent
+//-----------------------------------------------------
+const previousMedia = (Index) => {
+  if (Index === 0) {
+    mediaIndex = userMedia.length - 1;
+    mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+  } else {
+    mediaIndex--;
+    mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+  }
+  mediaWrapper.focus();
+};
+
+//-----------------------------------------------------
+// Fonction media suivant
+//-----------------------------------------------------
+const nextMedia = (Index) => {
+  if (Index === userMedia.length - 1) {
+    mediaIndex = 0;
+    mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+  } else {
+    mediaIndex++;
+    mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
+  }
+  mediaWrapper.focus();
+};
+
+//-----------------------------------------------------
 // Fonction gestion lightbox
 //-----------------------------------------------------
-
 const openLightboxOnClick = () => {
   const links = document.querySelectorAll(".lightbox__link");
 
-  let mediaIndex = null;
   links.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
@@ -130,43 +156,24 @@ const openLightboxOnClick = () => {
       mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
     });
   });
-  const previousMedia = () => {
-    if (mediaIndex === 0) {
-      mediaIndex = userMedia.length - 1;
-      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
-    } else {
-      mediaIndex--;
-      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
-    }
-    mediaWrapper.focus();
-  };
-  const nextMedia = () => {
-    if (mediaIndex === userMedia.length - 1) {
-      mediaIndex = 0;
-      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
-    } else {
-      mediaIndex++;
-      mediaTemplate(userMedia[mediaIndex]).getLightboxCard();
-    }
-    mediaWrapper.focus();
-  };
 
   prevBtn.addEventListener("click", () => {
-    previousMedia();
+    previousMedia(mediaIndex);
   });
   nextBtn.addEventListener("click", () => {
-    nextMedia();
+    nextMedia(mediaIndex);
   });
+
   // -----------------------------------------------------
-  // Ecoute "Echape" pour fermer modal
+  // Gestion navigation clavier lightox
+
   document.addEventListener("keydown", (e) => {
     const isModalOpen = lightboxModal.getAttribute("aria-hidden");
     if (isModalOpen === "false" && e.key === "ArrowLeft") {
-      console.log("test");
-      previousMedia();
+      previousMedia(mediaIndex);
     }
     if (isModalOpen === "false" && e.key === "ArrowRight") {
-      nextMedia();
+      nextMedia(mediaIndex);
     }
   });
 };
