@@ -4,16 +4,22 @@ const mediaTemplate = (data) => {
   const videoUrl = `assets/images/${photographerId}/${video}`;
 
   // -----------------------------------------------------
-  // Fonction gestion du type de média galerie
+  // Fonction gestion du type de média
   // -----------------------------------------------------
 
-  const mediaSwitcherGallery = () => {
+  const mediaSwitcher = (string) => {
     if (data.image) {
-      return `<img src="${imageUrl}" alt="${title}" />`;
+      return `<img src="${imageUrl}" alt="${title}" class="media__gallery-img"/>`;
     }
     if (data.video) {
-      return ` <video  aria-label="${title}" tabindex="-1">
+      if (!string) {
+        return ` <video  aria-label="${title}" tabindex="-1">
             <source src="${videoUrl}"  type="video/mp4">
+            </video> <div class="media__video-ico-wrapper"><img src="./assets/icons/play-button.svg" class="media__video-ico" alt="logo video"/></div>
+            `;
+      }
+      return ` <video  controls >
+            <source src="${videoUrl}" alt="${title}" >
             </video>`;
     }
     throw new Error("Absence de fichier media");
@@ -28,13 +34,13 @@ const mediaTemplate = (data) => {
     article.className = "media__article";
     article.innerHTML = ` 
           <a href="#" class="media__wrapper lightbox__link"  aria-label="${title}, vue rapprochée"data-id=${id} tabindex="0">
-          ${mediaSwitcherGallery()}
+          ${mediaSwitcher()}
           </a> 
           <div class="media__info">
-            <h2 class="media__title" tabindex="0">${title}</h2>
+            <h2 class="media__title" >${title}</h2>
            
-            <div class="media__likes" data-id=${id} tabindex="0">
-              <span class='media__likes-number'>${likes} 
+            <div class="media__likes" data-id=${id} tabindex="0" >
+              <span class='media__likes-number' aria-live="polite" aria-atomic="true">${likes} 
                </span> <i aria-label="likes" class="fa-solid fa-heart media__heart ${
                  isLiked ? "media__heart--isLiked" : ""
                }" > 
@@ -47,22 +53,6 @@ const mediaTemplate = (data) => {
   };
 
   // -----------------------------------------------------
-  // Fonction gestion du type de média lightbox
-  // -----------------------------------------------------
-
-  const mediaSwitcherLightbox = () => {
-    if (data.image) {
-      return `<img src="${imageUrl}" alt="${title}" />`;
-    }
-    if (data.video) {
-      return ` <video  controls >
-            <source src="${videoUrl}" alt="${title}" >
-            </video>`;
-    }
-    throw new Error("Absence de fichier media");
-  };
-
-  // -----------------------------------------------------
   // Fonction création du contenu lightbox
   // -----------------------------------------------------
 
@@ -70,7 +60,7 @@ const mediaTemplate = (data) => {
     const h2 = document.getElementById("lightbox-title");
     h2.textContent = `${title}`;
     const mediaWrapper = document.getElementById("media-wrapper");
-    mediaWrapper.innerHTML = ` ${mediaSwitcherLightbox()}`;
+    mediaWrapper.innerHTML = ` ${mediaSwitcher("lightbox")}`;
   };
 
   return { getMediaCardDom, getLightboxCard };

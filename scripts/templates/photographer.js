@@ -39,12 +39,12 @@ function photographerTemplate(data) {
     ).textContent = tagline;
     const img = document.querySelector("#photographer  .photographer__img");
     img.src = picture;
-    img.setAttribute("aria-labelledby", "h1");
+    img.setAttribute("alt", `${name}`);
     document.getElementById("price-per-day").textContent = `${price}€ / jour`;
     document.getElementById(
       "modal-h2"
     ).innerHTML = `Contactez-moi </br> ${name}`;
   };
 
-  return { name, picture, getUserCardDOM, userInfo };
+  return { getUserCardDOM, userInfo };
 }

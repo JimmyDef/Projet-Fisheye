@@ -36,17 +36,62 @@
         </div>
       </section>
       <section class="media">
-        <form class="media__form">
-          <label for="sorter" tabindex="7">Trier par</label>
-          <select name="sorter" id="sorter" tabindex="8">
-            <option value="popularity">Popularité</option>
-            <option value="date">Date</option>
-            <option value="title">Titre</option>
-          </select>
+        <form class="media__sorter">
+          <div class="media__sorter-chevron ">
+            <img src="./assets/icons/chevron-btn.svg" />
+          </div>
+          <label tabindex="7" for="sorter">Trier par</label>
+
+          <div class="media__sorter-wrapper">
+            <button
+              tabindex="0"
+              name="sorter"
+              id="sorter"
+              class="media__sorter-btn btn"
+              aria-expanded="false"
+              aria-haspopup="listbox"
+              aria-controls="sorter-options"
+              aria-activedescendant="popularity-sorter">
+              Populaire
+            </button>
+
+            <ul
+              tabindex="0"
+              id="sorter-options"
+              class="media__sorter-options"
+              role="list"
+              aria-labelledby="sorter">
+              <li
+                tabindex="-1"
+                role="option"
+                id="popularity-sorter"
+                aria-selected="true">
+                Populaire
+              </li>
+              <li
+                tabindex="0"
+                role="option"
+                id="date-sorter"
+                aria-selected="false">
+                Date
+              </li>
+              <li
+                tabindex="0"
+                role="option"
+                id="title-sorter"
+                aria-selected="false">
+                Titre
+              </li>
+            </ul>
+          </div>
         </form>
         <div class="media__cards-container" id="media-section"></div>
       </section>
-      <aside class="total-and-price" id="total-and-price" tabindex="6" id="total-and-price">
+      <aside
+        class="total-and-price"
+        id="total-and-price"
+        tabindex="6"
+        id="total-and-price">
         <span id="total" class="total-and-price__likes"> </span>
         <i
           class="fa-solid fa-heart total-and-price__heart"
@@ -54,52 +99,99 @@
         <span id="price-per-day" class="total-and-price__price"></span>
       </aside>
     </main>
-    <section id="contact_modal" class="background-modal"  aria-hidden="true" role="dialog"  aria-labelledby="modal-h1" tabindex="0">
-      <div class="modal"   >
-        <header class="modal__header" > 
+    <section
+      id="contact_modal"
+      class="background-modal"
+      aria-hidden="true"
+      role="dialog"
+      aria-labelledby="modal-h2"
+      tabindex="0">
+      <div class="modal">
+        <header class="modal__header">
           <h2 class="modal__h2" id="modal-h2" tabindex="0"></h2>
-          
         </header>
         <form class="modal__form" id="modal-form">
-          <div  class="modal__input-wrapper" >
+          <div class="modal__input-wrapper">
             <label for="fistname" tabindex="1">Prénom</label>
-            <input id="fistname" type="text" name="fistname" required />
+            <input
+              class="modal__form-input"
+              id="fistname"
+              type="text"
+              name="fistname"
+              required />
           </div>
-          <div  class="modal__input-wrapper">
+          <div class="modal__input-wrapper">
             <label for="lastname" tabindex="2">Nom</label>
-            <input id="lastname" type="text" name="lastname" required />
-          </div >
+            <input
+              class="modal__form-input"
+              id="lastname"
+              type="text"
+              name="lastname"
+              required />
+          </div>
           <div class="modal__input-wrapper">
             <label for="email" tabindex="3">Email</label>
-            <input id="email" type="email" name="email"  required/>
+            <input
+              class="modal__form-input"
+              id="email"
+              type="email"
+              name="email"
+              required />
           </div>
           <div class="modal__input-wrapper">
             <label for="message" tabindex="4">Votre message</label>
-            <textarea id="message" name="message" maxlength="100" required></textarea>
-          </div class="modal__input-wrapper">
-          <input type="submit" class="contact_button" value="Envoyer"  id="submitBtn"/>
-         <button tabindex="0" id="close-modal" class="modal__close-btn"><img  
-            src="assets/icons/close.svg"
-            
-            alt="Fermer le formulaire" class="modal__img"  tabindex="0"/></button>
+            <textarea
+              id="message"
+              name="message"
+              maxlength="100"
+              required></textarea>
+          </div>
+          <input
+            type="submit"
+            class="contact_button"
+            value="Envoyer"
+            id="submitBtn" />
+          <button tabindex="0" id="close-modal" class="modal__close-btn">
+            <img
+              src="assets/icons/close.svg"
+              alt="Fermer le formulaire"
+              class="modal__img"
+              tabindex="0" />
+          </button>
         </form>
       </div>
     </section>
-    <section id="lightbox"   class="background-lightbox" aria-hidden="true" role="dialog"  aria-label="vue rapprochée" tabindex="0">
+    <section
+      id="lightbox"
+      class="background-lightbox"
+      aria-hidden="true"
+      role="dialog"
+      aria-label="vue rapprochée"
+      tabindex="0">
       <article class="lightbox__card">
         <div class="lightbox__slideshow">
-          <div class="lightbox__media-wrapper" id="media-wrapper" tabindex="0"></div>
-          <button id="prev-media" class="lightbox__prev lightbox__btn " ><img src="assets/icons/chevron.svg" alt="media précédent"    ></button>
-          <button class="lightbox__next lightbox__btn " id="next-media"><img src="assets/icons/chevron.svg"  alt="media suivant"   ></button>
-          
-          
-          <button id="close-lightbox" tabindex="0" class="lightbox__close-btn lightbox__btn "><img src="assets/icons/close-red.svg" alt="Fermer le diaporama"  fill="#911C1C"   ></button>
-          
+          <div
+            class="lightbox__media-wrapper"
+            id="media-wrapper"
+            tabindex="0"></div>
+          <button id="prev-media" class="lightbox__prev lightbox__btn ">
+            <img src="assets/icons/chevron.svg" alt="media précédent" />
+          </button>
+          <button class="lightbox__next lightbox__btn " id="next-media">
+            <img src="assets/icons/chevron.svg" alt="media suivant" />
+          </button>
+
+          <button
+            id="close-lightbox"
+            tabindex="0"
+            class="lightbox__close-btn lightbox__btn ">
+            <img
+              src="assets/icons/close-red.svg"
+              alt="Fermer le diaporama"
+              fill="#911C1C" />
+          </button>
         </div>
-        <h2 class="lightbox__title" id="lightbox-title" ></h2>
-     
-
-
+        <h2 class="lightbox__title" id="lightbox-title">Titre lightbox</h2>
       </article>
     </section>
     <script
@@ -110,6 +202,6 @@
 
     <script type="module" src="./scripts/pages/photographer.js"></script>
     <script type="module" src="./scripts/utils/contact_modal.js"></script>
-
+    <script type="module" src="./scripts/utils/sorter.js"></script>
   </body>
 </html>

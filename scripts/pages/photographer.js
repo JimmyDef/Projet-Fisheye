@@ -1,5 +1,7 @@
 import { getData } from "../utils/modules.js";
 import { onOpenModal, onCloseModal } from "./../utils/contact_modal.js";
+export { userMedia, renderMedia, openLightboxOnClick, displaylikes };
+
 // Elements du DOM--------------------
 const mediaSection = document.getElementById("media-section");
 const mediaWrapper = document.getElementById("media-wrapper");
@@ -8,14 +10,13 @@ const lightboxModal = document.getElementById("lightbox");
 const prevBtn = document.getElementById("prev-media");
 const nextBtn = document.getElementById("next-media");
 const closeLightboxBtn = document.getElementById("close-lightbox");
+const sorterBtn = document.getElementById("sorter");
 
 // -----------------------------------
 const url = new URL(window.location.href);
 const id = url.searchParams.get("id");
 let userMedia = [];
 let mediaIndex;
-
-const selectBtn = document.getElementById("sorter");
 
 //-----------------------------------------------------
 // Fonction initialisation de la page
@@ -36,7 +37,9 @@ const initPage = async () => {
   renderMedia();
   displaylikes();
   openLightboxOnClick();
-  selectBtn.addEventListener("change", sortMedia);
+  sorterBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+  });
 };
 
 //-----------------------------------------------------
@@ -51,28 +54,6 @@ const renderMedia = () => {
     const mediaCardDom = mediaModel.getMediaCardDom();
     mediaSection.appendChild(mediaCardDom);
   });
-};
-
-//-----------------------------------------------------
-// Fonction pour trier les Cards
-//-----------------------------------------------------
-
-const sortMedia = () => {
-  const selectedValue = selectBtn.value;
-
-  if (selectedValue == "title") {
-    userMedia.sort((a, b) => a.title.localeCompare(b.title));
-  }
-  if (selectedValue == "popularity") {
-    userMedia.sort((a, b) => b.likes - a.likes);
-  }
-  if (selectedValue == "date") {
-    userMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
-  }
-
-  renderMedia();
-  displaylikes();
-  openLightboxOnClick();
 };
 
 //-----------------------------------------------------
@@ -160,7 +141,7 @@ const openLightboxOnClick = () => {
   });
 };
 // -----------------------------------------------------
-// Ecoute des boutons lightox
+// Ecoute des boutons lightbox
 prevBtn.addEventListener("click", () => {
   previousMedia(mediaIndex);
 });
@@ -193,4 +174,5 @@ document.addEventListener("keydown", (e) => {
     focusLastMedia();
   }
 });
+
 initPage();

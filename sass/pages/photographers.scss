@@ -9,7 +9,6 @@ main {
   padding: 0 50px;
   display: flex;
   justify-content: space-between;
-
   align-items: center;
   &__info {
     width: 33%;
@@ -56,17 +55,7 @@ main {
   max-width: 1440px;
   margin: 0 auto;
   color: $color-primary;
-  form {
-    margin-bottom: 58px;
-    font-size: 1.125rem;
-    font-weight: 700;
-    label {
-      margin-right: 30px;
-    }
-    select {
-      font-size: 1.625rem;
-    }
-  }
+
   &__article {
     width: 350px;
     &:nth-child(3n + 2) {
@@ -91,16 +80,8 @@ main {
     height: 300px;
     position: relative;
     cursor: pointer;
-    &:has(video)::after {
-      fill: $color-primary;
-      position: absolute;
-      content: url(/assets/icons/play-button.svg);
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
-  img {
+  &__gallery-img {
     display: block;
     border-radius: 5px;
 
@@ -116,9 +97,15 @@ main {
     border-radius: 5px;
   }
 
+  &__video-ico-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   &__info {
     display: flex;
-
     justify-content: space-between;
     padding: 6px 0;
   }
