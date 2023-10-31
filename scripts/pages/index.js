@@ -1,4 +1,4 @@
-import { getData } from "../utils/modules.js";
+import { getData } from "./../utils/modules.js";
 
 const displayData = async (photographers) => {
   const photographersSection = document.querySelector(".photographer_section");

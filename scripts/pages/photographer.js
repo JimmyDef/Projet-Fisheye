@@ -1,4 +1,4 @@
-import { getData } from "../utils/modules.js";
+import { getData } from "./../utils/modules.js";
 import { onOpenModal, onCloseModal } from "./../utils/contact_modal.js";
 export { userMedia, renderMedia, openLightboxOnClick, displaylikes };
 
