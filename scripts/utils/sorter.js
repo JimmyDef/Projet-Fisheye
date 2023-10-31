@@ -10,7 +10,6 @@ const sorterBtn = document.getElementById("sorter");
 const sorterUl = document.getElementById("sorter-options");
 const chevronImg = document.querySelector(".media__sorter-chevron");
 let sorterList = document.querySelectorAll("#sorter-options li");
-// const sorterSelected = document.querySelector("[aria-selected='true']");
 const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
 
 //-----------------------------------------------------
@@ -43,6 +42,7 @@ const orderList = () => {
     }
   }
 };
+
 // -----------------------------------------------------
 // Fonction ouvrir la liste
 const openList = () => {
@@ -74,35 +74,63 @@ sorterBtn.addEventListener("click", () => {
 document.addEventListener("keydown", (e) => {
   const isListOpen = ariaExpanded.getAttribute("aria-expanded");
   const actualSorter = document.querySelector("[aria-selected='true']");
+  const currentFocus = document.activeElement;
+  const nextFocus = currentFocus.nextElementSibling;
+  const previousFocus = currentFocus.previousElementSibling;
+  const firstUlChild = document.querySelector("ul > li");
+  const lastUlChild = document.querySelector("ul > li:last-child");
+
+  if (currentFocus === sorterBtn) {
+    switch (e.key) {
+      case "ArrowUp":
+        openList();
+        lastUlChild.focus();
+
+        break;
+      case "ArrowDown":
+        openList();
+        firstUlChild.focus();
+        break;
+    }
+    return;
+  }
+
   if (isListOpen === "true") {
     e.preventDefault();
-    if (e.key === "Tab") {
-      closeList(actualSorter.innerText);
-      // sorterBtn.focus();
+    switch (e.key) {
+      case "Tab":
+        closeList(actualSorter.innerText);
+        break;
+      case "Escape":
+        closeList(actualSorter.innerText);
+        sorterBtn.focus();
+        break;
+      case "Enter":
+        // const focusedElement = document.activeElement;
+        updateList(currentFocus);
+        break;
+      case "ArrowDown":
+        if (currentFocus === lastUlChild) {
+          firstUlChild.focus();
+        } else {
+          nextFocus.focus();
+        }
+        break;
+      case "ArrowUp":
+        if (currentFocus === firstUlChild) {
+          lastUlChild.focus();
+        } else {
+          previousFocus.focus();
+        }
+        break;
     }
-    if (e.key === "Escape") {
-      closeList(actualSorter.innerText);
-      sorterBtn.focus();
-    }
-    if (e.key === "Enter") {
-      const focusedElement = document.activeElement;
-
-      updateList(focusedElement);
-      // sorterBtn.focus();
-    }
-    if (e.key === "ArrowDown") {
-      // const elementToFOcus =
-    }
-    if (e.key === "ArrowUp") {
-      // const elementToFOcus =
-    }
+    return;
   }
 });
 
 sorterList.forEach((li) => {
   li.addEventListener("click", () => {
     updateList(li);
-    // sorterBtn.focus();
   });
 });
 const updateList = (li) => {

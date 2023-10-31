@@ -70,6 +70,16 @@ const displaylikes = () => {
     const media = userMedia.find((elt) => elt.id == dataId);
 
     likesBox.addEventListener("click", () => {
+      updateLikes();
+    });
+    likesBox.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        updateLikes();
+      }
+    });
+    //-------------------------------------
+    // Fonction mise a jour compte de Like
+    const updateLikes = () => {
       if (media.isLiked === undefined || media.isLiked === false) {
         likesNb.textContent = parseInt(likesNb.textContent) + 1;
         media.likes++;
@@ -86,7 +96,7 @@ const displaylikes = () => {
         updateTotalLikes();
         return;
       }
-    });
+    };
   });
   const updateTotalLikes = () => {
     const likesTotal = userMedia.reduce((a, b) => parseInt(b.likes) + a, 0);
