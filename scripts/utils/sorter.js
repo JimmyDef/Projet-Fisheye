@@ -56,16 +56,54 @@ const openList = () => {
 // Fonction fermer la liste
 const closeList = (sorterName) => {
   sorterBtn.setAttribute("aria-expanded", "false");
+  sorterUl.style.display = "none";
   sorterBtn.style.display = "block";
   sorterBtn.innerText = sorterName;
-  sorterUl.style.display = "none";
   chevronImg.classList.remove("media__sorter-chevron--up");
   sorterBtn.focus();
 };
-
+// -----------------------------------------------------
+// Actualisation de  la liste puis ouverture
 sorterBtn.addEventListener("click", () => {
   sorterList = document.querySelectorAll("#sorter-options li");
   openList();
+});
+
+// -----------------------------------------------------
+// Ecoute "Echape" pour fermer la liste
+document.addEventListener("keydown", (e) => {
+  const isListOpen = ariaExpanded.getAttribute("aria-expanded");
+  const actualSorter = document.querySelector("[aria-selected='true']");
+  if (isListOpen === "true") {
+    e.preventDefault();
+    if (e.key === "Tab") {
+      closeList(actualSorter.innerText);
+      // sorterBtn.focus();
+    }
+    if (e.key === "Escape") {
+      closeList(actualSorter.innerText);
+      sorterBtn.focus();
+    }
+    if (e.key === "Enter") {
+      const focusedElement = document.activeElement;
+
+      updateList(focusedElement);
+      // sorterBtn.focus();
+    }
+    if (e.key === "ArrowDown") {
+      // const elementToFOcus =
+    }
+    if (e.key === "ArrowUp") {
+      // const elementToFOcus =
+    }
+  }
+});
+
+sorterList.forEach((li) => {
+  li.addEventListener("click", () => {
+    updateList(li);
+    // sorterBtn.focus();
+  });
 });
 const updateList = (li) => {
   const ariaSelected = li.getAttribute("aria-selected");
@@ -82,35 +120,3 @@ const updateList = (li) => {
     closeList(li.innerText);
   }
 };
-// -----------------------------------------------------
-// Ecoute "Echape" pour fermer la liste
-document.addEventListener("keydown", (e) => {
-  const isListOpen = ariaExpanded.getAttribute("aria-expanded");
-  const actualSorter = document.querySelector("[aria-selected='true']");
-  if (isListOpen === "true") {
-    if (e.key === "Tab") {
-      closeList(actualSorter.innerText);
-    }
-    if (e.key === "Escape") {
-      closeList(actualSorter.innerText);
-    }
-    if (e.key === "Enter") {
-      const focusedElement = document.activeElement;
-
-      console.log(
-        "🚀 ~ document.addEventListener ~ focusedElement:",
-        focusedElement
-      );
-
-      console.log("🚀 ~ document.addEventListener ~ isListOpen:", isListOpen);
-
-      updateList(focusedElement);
-    }
-  }
-});
-
-sorterList.forEach((li) => {
-  li.addEventListener("click", () => {
-    updateList(li);
-  });
-});
