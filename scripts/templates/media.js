@@ -41,10 +41,13 @@ const mediaTemplate = (data) => {
            
             <div class="media__likes" data-id=${id} tabindex="0" >
               <span class='media__likes-number' aria-live="polite" aria-atomic="true">${likes} 
-               </span> <i aria-label="likes" class="fa-solid fa-heart media__heart ${
-                 isLiked ? "media__heart--isLiked" : ""
-               }" > 
-              </i>
+               </span> <div class="media__heart-wrapper">
+               <img alt="coeur"  src="./assets/icons/heart.svg" class="media__heart " />
+               <img alt="coeur"  src="./assets/icons/heart-red.svg" class="media__heart media__heart--red ${
+                 isLiked ? "media__heart--red-isLiked" : ""
+               }" /> 
+              
+            </div>
             </div>
           </div>
           `;

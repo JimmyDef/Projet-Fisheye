@@ -30,9 +30,7 @@
           </button>
         </div>
         <div class="photographer__img-container">
-          <div class="photographer__img-wrapper" tabindex="5">
-            <img class="photographer__img" />
-          </div>
+          <div class="photographer__img-wrapper" tabindex="5"></div>
         </div>
       </section>
       <section class="media">
@@ -40,7 +38,7 @@
           <div class="media__sorter-chevron ">
             <img src="./assets/icons/chevron-btn.svg" />
           </div>
-          <label tabindex="7" for="sorter">Trier par</label>
+          <label for="sorter">Trier par</label>
 
           <div class="media__sorter-wrapper">
             <button
@@ -64,21 +62,21 @@
               <li
                 tabindex="-1"
                 role="option"
-                id="popularity-sorter"
+                data-id="popularity-sorter"
                 aria-selected="true">
                 Populaire
               </li>
               <li
                 tabindex="0"
                 role="option"
-                id="date-sorter"
+                data-id="date-sorter"
                 aria-selected="false">
                 Date
               </li>
               <li
                 tabindex="0"
                 role="option"
-                id="title-sorter"
+                data-id="title-sorter"
                 aria-selected="false">
                 Titre
               </li>

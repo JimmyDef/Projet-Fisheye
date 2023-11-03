@@ -8,8 +8,6 @@ export const getData = async (url) => {
     if (res.ok) {
       const result = await res.json();
 
-      console.log("🚀 ~ getData ~ result:", result);
-
       return result;
     } else {
       throw new Error("Erreur traitement  Json");

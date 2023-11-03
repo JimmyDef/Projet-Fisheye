@@ -37,9 +37,13 @@ function photographerTemplate(data) {
     document.querySelector(
       "#photographer  .photographer__tagline"
     ).textContent = tagline;
-    const img = document.querySelector("#photographer  .photographer__img");
+    // const img = document.querySelector("#photographer  .photographer__img");
+    const imgWrapper = document.querySelector(".photographer__img-wrapper");
+    const img = document.createElement("img");
     img.src = picture;
+    img.className = "photographer__img";
     img.setAttribute("alt", `${name}`);
+    imgWrapper.appendChild(img);
     document.getElementById("price-per-day").textContent = `${price}€ / jour`;
     document.getElementById(
       "modal-h2"

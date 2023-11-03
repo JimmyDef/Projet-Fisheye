@@ -16,14 +16,14 @@ const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
 // Fonction pour trier les Cards
 //-----------------------------------------------------
 
-const sortMedia = (string) => {
-  if (string === "Titre") {
+const sortMedia = (dataId) => {
+  if (dataId === "title-sorter") {
     userMedia.sort((a, b) => a.title.localeCompare(b.title));
   }
-  if (string === "Populaire") {
+  if (dataId === "popularity-sorter") {
     userMedia.sort((a, b) => b.likes - a.likes);
   }
-  if (string === "Date") {
+  if (dataId === "date-sorter") {
     userMedia.sort((a, b) => new Date(b.date) - new Date(a.date));
   }
   renderMedia();
@@ -106,7 +106,6 @@ document.addEventListener("keydown", (e) => {
         sorterBtn.focus();
         break;
       case "Enter":
-        // const focusedElement = document.activeElement;
         updateList(currentFocus);
         break;
       case "ArrowDown":
@@ -135,8 +134,9 @@ sorterList.forEach((li) => {
 });
 const updateList = (li) => {
   const ariaSelected = li.getAttribute("aria-selected");
+  const dataId = li.getAttribute("data-id");
   if (ariaSelected === "false") {
-    sortMedia(li.innerText);
+    sortMedia(dataId);
     sorterList.forEach((li) => {
       li.setAttribute("aria-selected", "false");
     });

@@ -23,7 +23,7 @@ let mediaIndex;
 // -----------------------------------------------------
 const initPage = async () => {
   const { photographers, media } = await getData(
-    "./../../data/photographers.json"
+    "https://jimmydef.net/fisheye/data/photographers.json"
   );
   const photographer = photographers.find((data) => data.id == id);
   userMedia = media.filter((media) => media.photographerId == id);
@@ -65,7 +65,11 @@ const displaylikes = () => {
 
   likesPerMedia.forEach((likesNb) => {
     const likesBox = likesNb.closest(".media__likes");
-    const heart = likesNb.nextElementSibling;
+    const heart = likesBox.querySelector(".media__heart--red");
+    const childNodes = likesBox.childNodes;
+
+    console.log("🚀 ~ likesPerMedia.forEach ~ childNodes:", childNodes);
+
     const dataId = likesBox.dataset.id;
     const media = userMedia.find((elt) => elt.id == dataId);
 
@@ -84,7 +88,7 @@ const displaylikes = () => {
         likesNb.textContent = parseInt(likesNb.textContent) + 1;
         media.likes++;
         media.isLiked = true;
-        heart.classList.toggle("media__heart--isLiked");
+        heart.classList.toggle("media__heart--red-isLiked");
         updateTotalLikes();
         return;
       }
@@ -92,7 +96,7 @@ const displaylikes = () => {
         likesNb.textContent = parseInt(likesNb.textContent) - 1;
         media.likes--;
         media.isLiked = false;
-        heart.classList.toggle("media__heart--isLiked");
+        heart.classList.toggle("media__heart--red-isLiked");
         updateTotalLikes();
         return;
       }

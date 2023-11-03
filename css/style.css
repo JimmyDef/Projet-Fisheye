@@ -516,21 +516,33 @@ main {
   font-weight: 400;
 }
 .media__likes {
-  width: 80px;
-  text-align: end;
+  display: flex;
   cursor: pointer;
 }
 .media__likes-number {
   display: inline-block;
-  margin-right: 3px;
+  margin-right: 8px;
   padding-top: 7px;
 }
+.media__heart-wrapper {
+  position: relative;
+  width: 20px;
+}
 .media__heart {
-  color: #db8876;
+  z-index: 2;
+  position: absolute;
+  top: 6px;
+  left: 0;
   font-size: 1.125rem;
   transition: all 250ms;
 }
-.media__heart--isLiked {
+.media__heart--red {
+  z-index: 1;
+  transform: scale(0.5);
+}
+.media__heart--red-isLiked {
+  z-index: 3;
+  transition: all 250ms;
   transform: scale(1.2);
   color: #901c1c;
 }
