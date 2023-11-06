@@ -50,8 +50,7 @@
               class="media__sorter-btn btn"
               aria-expanded="false"
               aria-haspopup="listbox"
-              aria-controls="sorter-options"
-              aria-activedescendant="popularity-sorter">
+              aria-controls="sorter-options">
               Populaire
             </button>
 
@@ -59,7 +58,7 @@
               tabindex="0"
               id="sorter-options"
               class="media__sorter-options"
-              role="list"
+              role="listbox"
               aria-labelledby="sorter">
               <li
                 tabindex="-1"
@@ -87,11 +86,7 @@
         </form>
         <div class="media__cards-container" id="media-section"></div>
       </section>
-      <aside
-        class="total-and-price"
-        id="total-and-price"
-        tabindex="6"
-        id="total-and-price">
+      <aside class="total-and-price" tabindex="6" id="total-and-price">
         <span id="total" class="total-and-price__likes"> </span>
         <img
           src="./assets/icons/heart-black.svg"
@@ -157,8 +152,7 @@
             <img
               src="./assets/icons/close.svg"
               alt="Fermer le formulaire"
-              class="modal__img"
-              tabindex="0" />
+              class="modal__img" />
           </button>
         </form>
       </div>
@@ -187,10 +181,7 @@
             id="close-lightbox"
             tabindex="0"
             class="lightbox__close-btn lightbox__btn ">
-            <img
-              src="./assets/icons/close-red.svg"
-              alt="Fermer le diaporama"
-              fill="#911C1C" />
+            <img src="./assets/icons/close-red.svg" alt="Fermer le diaporama" />
           </button>
         </div>
         <h2 class="lightbox__title" id="lightbox-title">Titre lightbox</h2>
