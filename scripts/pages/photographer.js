@@ -165,12 +165,6 @@ closeLightboxBtn.addEventListener("click", () => {
 // -----------------------------------------------------
 // Gestion navigation clavier lightox
 
-const focusLastMedia = () => {
-  const lastMediaId = userMedia[mediaIndex].id;
-  const lastMediaOpened = document.querySelector(`[data-id="${lastMediaId}"]`);
-  lastMediaOpened.focus();
-};
-
 document.addEventListener("keydown", (e) => {
   const isModalOpen = lightboxModal.getAttribute("aria-hidden");
   if (isModalOpen === "false" && e.key === "ArrowLeft") {
@@ -184,5 +178,13 @@ document.addEventListener("keydown", (e) => {
     focusLastMedia();
   }
 });
+//-----------------------------------------------------
+// Fonction retour dernier focus galerie après lightbox
+//-----------------------------------------------------
+const focusLastMedia = () => {
+  const lastMediaId = userMedia[mediaIndex].id;
+  const lastMediaOpened = document.querySelector(`[data-id="${lastMediaId}"]`);
+  lastMediaOpened.focus();
+};
 
 initPage();

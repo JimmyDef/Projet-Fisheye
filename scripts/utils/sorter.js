@@ -11,7 +11,6 @@ const sorterUl = document.getElementById("sorter-options");
 const chevronImg = document.querySelector(".media__sorter-chevron");
 let sorterList = document.querySelectorAll("#sorter-options li");
 const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
-// const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
 
 //-----------------------------------------------------
 // Fonction pour trier les Cards
@@ -52,7 +51,6 @@ const openList = () => {
   sorterUl.style.display = "block";
   chevronImg.classList.add("media__sorter-chevron--up");
   chevronImg.alt = "chevron poitant vers le haut";
-
   sorterList[0].focus();
 };
 // -----------------------------------------------------
@@ -74,7 +72,7 @@ sorterBtn.addEventListener("click", () => {
 });
 
 // -----------------------------------------------------
-// Ecoute "Echape" pour fermer la liste
+// Gestion de la liste au clavier
 document.addEventListener("keydown", (e) => {
   const isListOpen = ariaExpanded.getAttribute("aria-expanded");
   const actualSorter = document.querySelector("[aria-selected='true']");
@@ -130,12 +128,17 @@ document.addEventListener("keydown", (e) => {
     return;
   }
 });
-
+// -----------------------------------------------------
+// Ecoute des éléments de la liste
 sorterList.forEach((li) => {
   li.addEventListener("click", () => {
     updateList(li);
   });
 });
+
+//-----------------------------------------------------
+// Fonction gestion des aria et de la liste à la selection
+//-----------------------------------------------------
 const updateList = (li) => {
   const ariaSelected = li.getAttribute("aria-selected");
   const dataId = li.getAttribute("data-id");
