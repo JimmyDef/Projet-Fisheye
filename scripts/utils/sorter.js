@@ -11,6 +11,7 @@ const sorterUl = document.getElementById("sorter-options");
 const chevronImg = document.querySelector(".media__sorter-chevron");
 let sorterList = document.querySelectorAll("#sorter-options li");
 const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
+// const ariaExpanded = document.querySelector("#sorter[aria-expanded]");
 
 //-----------------------------------------------------
 // Fonction pour trier les Cards
@@ -50,6 +51,8 @@ const openList = () => {
   sorterBtn.style.display = "none";
   sorterUl.style.display = "block";
   chevronImg.classList.add("media__sorter-chevron--up");
+  chevronImg.alt = "chevron poitant vers le haut";
+
   sorterList[0].focus();
 };
 // -----------------------------------------------------
@@ -61,6 +64,7 @@ const closeList = (sorterName) => {
   sorterBtn.innerText = sorterName;
   chevronImg.classList.remove("media__sorter-chevron--up");
   sorterBtn.focus();
+  chevronImg.alt = "chevron poitant vers le bas";
 };
 // -----------------------------------------------------
 // Actualisation de  la liste puis ouverture

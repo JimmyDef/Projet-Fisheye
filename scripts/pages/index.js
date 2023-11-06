@@ -13,7 +13,7 @@ const displayData = async (photographers) => {
 const init = async () => {
   // Récupère les datas des photographes
   const { photographers } = await getData(
-    "https://jimmydef.net/fisheye/data/photographers.json"
+    "https://jimmydef.net/fisheye/assets/data/photographers.json"
   );
   displayData(photographers);
 };

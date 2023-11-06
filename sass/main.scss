@@ -1,19 +1,15 @@
 @import "./utils/variables";
-// @import "./utils/functions";
+
 @import "./utils/mixins";
 
 @import "./base/base";
-// @import "./base/typography";
 
 @import "./components/buttons";
 @import "./components/sorter-listbox";
 @import "./components/likes-and-price-box";
 @import "./layouts/header";
 
-// @import "./layouts/nav";
-// @import "./layouts/container";
 @import "./layouts/modal";
 @import "./layouts/lightbox";
 @import "./pages/index";
 @import "./pages/photographers";
-// @import "./pages/project";
