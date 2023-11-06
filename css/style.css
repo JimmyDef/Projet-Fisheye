@@ -131,18 +131,19 @@ button {
   left: 10px;
 }
 .media__sorter-chevron {
+  pointer-events: none;
   position: absolute;
-  z-index: 100;
+  z-index: 3;
   top: 27px;
   left: 230px;
   transition: all 250ms;
 }
 .media__sorter-chevron--up {
   transform: rotate(0.5turn);
-  top: 22px;
 }
 
 .total-and-price {
+  z-index: 3;
   position: fixed;
   bottom: 0;
   right: 8vw;
@@ -164,7 +165,9 @@ button {
   float: right;
 }
 .total-and-price__heart {
-  font-size: 1.3rem;
+  position: absolute;
+  top: 23px;
+  left: 90px;
 }
 
 .header {
@@ -211,7 +214,7 @@ button {
 .background-modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   top: 0;
   left: 0;
   width: 100%;
@@ -275,7 +278,7 @@ button {
 .background-lightbox {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   top: 0;
   left: 0;
   width: 100%;
@@ -542,7 +545,6 @@ main {
 }
 .media__heart--red-isLiked {
   z-index: 3;
-  transition: all 250ms;
   transform: scale(1.2);
   color: #901c1c;
 }

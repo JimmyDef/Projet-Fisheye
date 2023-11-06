@@ -66,10 +66,6 @@ const displaylikes = () => {
   likesPerMedia.forEach((likesNb) => {
     const likesBox = likesNb.closest(".media__likes");
     const heart = likesBox.querySelector(".media__heart--red");
-    const childNodes = likesBox.childNodes;
-
-    console.log("🚀 ~ likesPerMedia.forEach ~ childNodes:", childNodes);
-
     const dataId = likesBox.dataset.id;
     const media = userMedia.find((elt) => elt.id == dataId);
 

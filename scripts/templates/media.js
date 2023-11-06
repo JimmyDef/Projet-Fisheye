@@ -1,6 +1,7 @@
 const mediaTemplate = (data) => {
   let { title, image, video, likes, photographerId, id, isLiked } = data;
   const imageUrl = `assets/images/${photographerId}/${image}`;
+  const minifiedImageUrl = `assets/min-images/${photographerId}/${image}`;
   const videoUrl = `assets/images/${photographerId}/${video}`;
 
   // -----------------------------------------------------
@@ -9,6 +10,9 @@ const mediaTemplate = (data) => {
 
   const mediaSwitcher = (string) => {
     if (data.image) {
+      if (!string) {
+        return `<img src="${minifiedImageUrl}" alt="${title}" class="media__gallery-img"/>`;
+      }
       return `<img src="${imageUrl}" alt="${title}" class="media__gallery-img"/>`;
     }
     if (data.video) {
