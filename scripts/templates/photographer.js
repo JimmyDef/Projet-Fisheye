@@ -1,4 +1,4 @@
-function photographerTemplate(data) {
+ export function photographerTemplate(data) {
   const { name, portrait, id, city, country, tagline, price } = data;
 
   const picture = `assets/photographers/${portrait}`;
@@ -37,7 +37,7 @@ function photographerTemplate(data) {
     document.querySelector(
       "#photographer  .photographer__tagline"
     ).textContent = tagline;
-    // const img = document.querySelector("#photographer  .photographer__img");
+   
     const imgWrapper = document.querySelector(".photographer__img-wrapper");
     const img = document.createElement("img");
     img.src = picture;
@@ -52,3 +52,4 @@ function photographerTemplate(data) {
 
   return { getUserCardDOM, userInfo };
 }
+//  { photographerTemplate };

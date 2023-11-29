@@ -39,3 +39,30 @@
   padding-left: 20px;
   font-size: 1.125rem;
 }
+@media screen and (max-width: 1150px) {
+  .btn,
+  .contact_button {
+    font-size: 1rem;
+    width: 150px;
+    height: 50px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .modal__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .modal__close-btn {
+    right: 20px;
+    height: 30px;
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .btn,
+  .contact_button {
+    font-size: 0.9rem;
+  }
+}

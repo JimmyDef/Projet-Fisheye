@@ -1,5 +1,7 @@
 import { getData } from "./../utils/modules.js";
 import { onOpenModal, onCloseModal } from "./../utils/contact_modal.js";
+import { photographerTemplate } from "../templates/photographer.js";
+import { mediaTemplate } from "./../templates/media.js";
 export { userMedia, renderMedia, openLightboxOnClick, displaylikes };
 
 // Elements du DOM--------------------

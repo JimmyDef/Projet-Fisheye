@@ -1,4 +1,4 @@
-const mediaTemplate = (data) => {
+ export const mediaTemplate = (data) => {
   let { title, image, video, likes, photographerId, id, isLiked } = data;
   const imageUrl = `assets/images/${photographerId}/${image}`;
   const minifiedImageUrl = `assets/min-images/${photographerId}/${image}`;

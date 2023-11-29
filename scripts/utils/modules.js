@@ -17,3 +17,10 @@ export const getData = async (url) => {
     return error;
   }
 };
+
+// ----------------------------------------------------
+// Fonction echappement caractères spéciaux
+// ----------------------------------------------------
+export const sanitizeForXSS = (input) => {
+  return input.replace(/[<>&"/=]/g, "");
+};

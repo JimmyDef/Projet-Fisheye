@@ -1,13 +1,23 @@
+.main__accueil {
+  padding: 0 100px;
+  @media screen and (max-width: 850px) {
+    padding: 0 10px;
+  }
+}
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 60px;
+  @media screen and (max-width: 850px) {
+    gap: 60px 20px;
+  }
 }
 
 .photographer_section article {
   justify-self: center;
   display: flex;
-  // justify-content: center;
   align-items: center;
   flex-direction: column;
   text-align: center;
@@ -25,14 +35,12 @@
     // overflow-clip-margin: unset;
     height: 100%;
     width: 100%;
-
     object-fit: cover;
-
     transform: scale(1.3);
   }
   &__h2 {
     color: $color-secondary;
-    font-size: 2.25rem;
+    font-size: clamp(1.7rem, 2.6vw, 2.25rem);
     font-weight: 400;
   }
 

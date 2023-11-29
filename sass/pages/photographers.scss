@@ -1,7 +1,7 @@
-main {
+.main__photographer {
   padding: 0 100px;
-  position: relative;
 }
+
 .photographer {
   background-color: #fafafa;
   height: 300px;
@@ -15,15 +15,15 @@ main {
   }
   &__name {
     color: #d3573c;
-    font-size: 4rem;
+    font-size: clamp(1.7rem, 4.5vw, 4rem);
   }
   &__location {
     color: $color-primary;
-    font-size: 1.5rem;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
   }
   &__tagline {
     color: $color-Quaternary;
-    font-size: 1.125rem;
+    font-size: clamp(0.9rem, 1.5vw, 1.125rem);
   }
   &__btn-wrapper {
     text-align: center;
@@ -66,10 +66,6 @@ main {
     display: grid;
     gap: 30px;
     grid-template-columns: 1fr 1fr 1fr;
-
-    @media screen and (max-width: 1330px) {
-      justify-content: center;
-    }
   }
   &__wrapper {
     display: block;
@@ -107,13 +103,14 @@ main {
   }
 
   &__title {
-    font-size: 1.5rem;
+    font-size: clamp(1.3rem, 2.5vw, 1.5rem);
     font-style: normal;
     font-weight: 400;
   }
   &__likes {
     display: flex;
     cursor: pointer;
+    margin-left: 20px;
   }
   &__likes-number {
     display: inline-block;
@@ -139,6 +136,172 @@ main {
         transform: scale(1.2);
         color: $color-primary;
       }
+    }
+  }
+}
+@media screen and (max-width: 1330px) {
+  .media {
+    &__wrapper {
+      width: 325px;
+      height: 270px;
+    }
+    &__article {
+      width: 325px;
+    }
+  }
+  .main__photographer {
+    padding: 0 50px;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  .media {
+    &__cards-container {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px 8%;
+    }
+    &__wrapper {
+      width: 350px;
+      height: 300px;
+    }
+    &__article {
+      width: 350px;
+      &:nth-child(3n + 2) {
+        justify-self: center;
+      }
+      &:nth-child(3n + 3) {
+        justify-self: center;
+      }
+      &:nth-child(even) {
+        justify-self: left;
+      }
+      &:nth-child(odd) {
+        justify-self: right;
+      }
+      &:nth-child(1) {
+        justify-self: right;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .photographer {
+    height: 250px;
+    display: grid;
+    padding: 0 0 0 30px;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    justify-content: unset;
+    align-items: unset;
+    place-items: center;
+    &__info {
+      padding-right: 25px;
+      grid-column: 1/5;
+      grid-row: 1/6;
+      width: 100%;
+    }
+    &__name {
+      margin-bottom: 30px;
+    }
+    &__btn-wrapper {
+      width: 100%;
+      grid-row: 3/6;
+      grid-column: 5 / 7;
+    }
+    &__img-container {
+      width: 100%;
+      justify-content: center;
+
+      grid-row: 2/3;
+      grid-column: 5 / 7;
+    }
+    &__img-wrapper {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  .media {
+    &__likes-number {
+      padding-top: 4px;
+    }
+    &__heart {
+      top: 4px;
+    }
+  }
+}
+@media screen and (max-width: 830px) {
+  .main__photographer {
+    padding: 0 20px;
+  }
+  .media {
+    padding: 0;
+    &__cards-container {
+      gap: 30px 30px;
+    }
+    &__wrapper {
+      width: 290px;
+      height: 230px;
+    }
+    &__article {
+      width: 290px;
+      &:nth-child(even) {
+        justify-self: left;
+      }
+      &:nth-child(odd) {
+        justify-self: right;
+      }
+    }
+  }
+}
+@media screen and (max-width: 670px) {
+  .media {
+    &__cards-container {
+      grid-template-columns: 1fr;
+    }
+    &__wrapper {
+      width: clamp(250px, 80vw, 400px);
+      height: 230px;
+    }
+    &__article {
+      width: clamp(250px, 80vw, 400px);
+
+      justify-self: center;
+
+      &:nth-child(n) {
+        justify-self: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main__photographer {
+    padding: 0 15px;
+  }
+  .photographer {
+    // padding: 0 5px;
+    &__btn-wrapper {
+      display: flex;
+
+      justify-content: center;
+      grid-row: 3/6;
+      grid-column: 5 / 7;
+    }
+  }
+}
+@media screen and (max-width: 530px) {
+  .main__photographer {
+    padding: 0 10px;
+  }
+  .photographer {
+    padding: 0 5px;
+    &__btn-wrapper {
+      display: flex;
+
+      justify-content: center;
+      grid-row: 3/6;
+      grid-column: 5 / 7;
     }
   }
 }

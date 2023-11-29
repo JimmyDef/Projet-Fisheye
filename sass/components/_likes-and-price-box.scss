@@ -5,7 +5,7 @@
   right: 8vw;
   transform: translate(0, 0);
   color: black;
-  width: 380px;
+  width: clamp(270px, 30vw, 380px);
   height: 70px;
   font-weight: 600;
   background-color: $color-secondary;
@@ -23,5 +23,42 @@
     position: absolute;
     top: 23px;
     left: 90px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .total-and-price {
+    right: 50px;
+    font-size: 1.3rem;
+    height: 60px;
+    line-height: 60px;
+    &__likes {
+      margin: 0 5px 0 15px;
+    }
+    &__price {
+      margin-right: 20px;
+      float: right;
+    }
+    &__heart {
+      top: 18px;
+      left: 70px;
+    }
+  }
+}
+@media screen and (max-width: 1020px) {
+  .total-and-price {
+    font-size: 1.2rem;
+    height: 50px;
+    line-height: 50px;
+    &__likes {
+      margin: 0 5px 0 15px;
+    }
+    &__price {
+      margin-right: 20px;
+      float: right;
+    }
+    &__heart {
+      top: 14px;
+      left: 75px;
+    }
   }
 }
