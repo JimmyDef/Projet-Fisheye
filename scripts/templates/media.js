@@ -1,5 +1,5 @@
- export const mediaTemplate = (data) => {
-  let { title, image, video, likes, photographerId, id, isLiked } = data;
+export const mediaTemplate = (data) => {
+  const { title, image, video, likes, photographerId, id, isLiked } = data;
   const imageUrl = `assets/images/${photographerId}/${image}`;
   const minifiedImageUrl = `assets/min-images/${photographerId}/${image}`;
   const videoUrl = `assets/images/${photographerId}/${video}`;
@@ -35,7 +35,7 @@
 
   const getMediaCardDom = () => {
     const article = document.createElement("article");
-    article.className = "media__article";
+     article.className =   "media__article";
     article.innerHTML = ` 
           <a href="#" class="media__wrapper lightbox__link"  aria-label="${title}, vue rapprochée"data-id=${id} tabindex="0">
           ${mediaSwitcher()}

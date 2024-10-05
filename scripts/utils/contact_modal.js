@@ -1,10 +1,10 @@
-import { sanitizeForXSS } from "./modules.js";
+import { sanitizeInput } from "./modules.js";
 // Dom elements ----------------------------------------
 const contactModal = document.getElementById("contact_modal");
 const modalForm = document.getElementById("modal-form");
 const mainHeader = document.querySelector(".header-photographer");
 const mainSection = document.querySelector("main");
-const firstNameInput = document.getElementById("fistname");
+const firstNameInput = document.getElementById("firstname");
 const lastNameInput = document.getElementById("lastname");
 const emailInput = document.getElementById("email");
 const messageInput = document.getElementById("message");
@@ -78,10 +78,10 @@ submitBtn.addEventListener("click", (e) => {
   openModalBtn.focus();
 
   const userMsg = {
-    firstName: sanitizeForXSS(modalForm.fistname.value),
-    lastName: sanitizeForXSS(modalForm.lastname.value),
-    email: sanitizeForXSS(modalForm.email.value),
-    message: sanitizeForXSS(modalForm.message.value),
+    firstName: modalForm.firstname.value,
+    lastName: modalForm.lastname.value,
+    email: modalForm.email.value,
+    message: modalForm.message.value,
   };
 
   console.log("🚀 ~ userMsg:", userMsg);
@@ -91,21 +91,29 @@ submitBtn.addEventListener("click", (e) => {
 // -----------------------------------------------------
 // Test validation des champs
 // -----------------------------------------------------
-const emailRegEx = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
+const emailRegEx = new RegExp(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
 const textRegEx = new RegExp(/^[a-zA-ZÀ-ÖØ-öø-ÿ-' ]{2,}$/i);
-const textAreaRegEx = new RegExp(/^[a-zA-ZÀ-ÖØ-öø-ÿ-' \n\r\t]{10,}$/i);
+const textAreaRegEx = /^[\s\S]{10,}$/;
 
-firstNameInput.addEventListener("change", () => {
+firstNameInput.addEventListener("change", (e) => {
+  const cleanedValue = sanitizeInput(e.target.value);
+  e.target.value = cleanedValue;
   isInputValid(firstNameInput, textRegEx);
 });
 
-lastNameInput.addEventListener("change", () => {
+lastNameInput.addEventListener("change", (e) => {
+  const cleanedValue = sanitizeInput(e.target.value);
+  e.target.value = cleanedValue;
   isInputValid(lastNameInput, textRegEx);
 });
-emailInput.addEventListener("change", () => {
+emailInput.addEventListener("change", (e) => {
+  const cleanedValue = sanitizeInput(e.target.value);
+  e.target.value = cleanedValue;
   isInputValid(emailInput, emailRegEx);
 });
-messageInput.addEventListener("change", () => {
+messageInput.addEventListener("change", (e) => {
+  const cleanedValue = sanitizeInput(e.target.value);
+  e.target.value = cleanedValue;
   isInputValid(messageInput, textAreaRegEx);
 });
 

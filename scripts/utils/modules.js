@@ -21,6 +21,4 @@ export const getData = async (url) => {
 // ----------------------------------------------------
 // Fonction echappement caractères spéciaux
 // ----------------------------------------------------
-export const sanitizeForXSS = (input) => {
-  return input.replace(/[<>&"/=]/g, "");
-};
+export const sanitizeInput = (input) => input.replace(/[<>&"/=]/g, "");
