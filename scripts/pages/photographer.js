@@ -25,7 +25,7 @@ let mediaIndex;
 // -----------------------------------------------------
 const initPage = async () => {
   const { photographers, media } = await getData(
-    "https://jimmydef.net/fisheye/assets/data/photographers.json"
+    "./../../assets/data/photographers.json"
   );
   const photographer = photographers.find((data) => data.id == id);
   userMedia = media.filter((media) => media.photographerId == id);

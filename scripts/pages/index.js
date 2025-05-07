@@ -1,5 +1,5 @@
 import { getData } from "./../utils/modules.js";
-import {photographerTemplate} from "./../templates/photographer.js"
+import { photographerTemplate } from "./../templates/photographer.js";
 
 const displayData = async (photographers) => {
   const photographersSection = document.querySelector(".photographer_section");
@@ -14,7 +14,7 @@ const displayData = async (photographers) => {
 const init = async () => {
   // Récupère les datas des photographes
   const { photographers } = await getData(
-    "https://jimmydef.net/fisheye/assets/data/photographers.json"
+    "./../../assets/data/photographers.json"
   );
   displayData(photographers);
 };
